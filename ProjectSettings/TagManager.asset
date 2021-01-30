@@ -38,6 +38,15 @@ TagManager:
   - 
   - 
   m_SortingLayers:
+  - name: Background
+    uniqueID: 1284879421
+    locked: 0
   - name: Default
     uniqueID: 0
+    locked: 0
+  - name: Ships
+    uniqueID: 2534022157
+    locked: 0
+  - name: Projectiles
+    uniqueID: 2143142851
     locked: 0
