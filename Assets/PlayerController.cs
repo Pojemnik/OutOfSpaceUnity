@@ -4,9 +4,10 @@ using UnityEngine;
 
 public class PlayerController : MonoBehaviour
 {
-    public float speed;
-    public float xBound;
-    public float defaultY;
+    public Vector2 speed;
+    public Vector2 bounds;
+    public GameObject projectilePrefab;
+    public float projectileSpeed;
 
     private Rigidbody2D rb2d;
     // Start is called before the first frame update
@@ -14,17 +15,24 @@ public class PlayerController : MonoBehaviour
     {
         rb2d = GetComponent<Rigidbody2D>();
     }
+
+    void Update()
+    {
+        
+    }
     void FixedUpdate()
     {
-        float moveHorizontal = Input.GetAxis("Horizontal");
+        Vector2 moveInput = new Vector2(Input.GetAxis("Horizontal"), Input.GetAxis("Vertical"));
+        Vector2 move = rb2d.position;
 
-        if ((moveHorizontal > 0 && rb2d.position.x < xBound) || (moveHorizontal < 0 && rb2d.position.x > -xBound))
+        if ((moveInput.x > 0 && rb2d.position.x < bounds.x) || (moveInput.x < 0 && rb2d.position.x > -bounds.x))
         {
-            rb2d.MovePosition(new Vector2(rb2d.position.x + (moveHorizontal * speed * Time.fixedDeltaTime), defaultY));
+            move.x += moveInput.x * speed.x * Time.fixedDeltaTime;
         }
-        else
+        if ((moveInput.y > 0 && rb2d.position.y < bounds.y) || (moveInput.y < 0 && rb2d.position.y > -bounds.y))
         {
-            rb2d.velocity = new Vector2(0, 0);
+            move.y += moveInput.y * speed.y * Time.fixedDeltaTime;
         }
+        rb2d.MovePosition(move);
     }
 }
