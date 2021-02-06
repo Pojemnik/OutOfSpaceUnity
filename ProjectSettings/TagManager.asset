@@ -5,6 +5,7 @@ TagManager:
   serializedVersion: 2
   tags:
   - Enemy
+  - Projectile
   layers:
   - Default
   - TransparentFX
@@ -45,9 +46,9 @@ TagManager:
   - name: Default
     uniqueID: 0
     locked: 0
-  - name: Ships
-    uniqueID: 2534022157
-    locked: 0
   - name: Projectiles
     uniqueID: 2143142851
+    locked: 0
+  - name: Ships
+    uniqueID: 2534022157
     locked: 0
