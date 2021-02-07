@@ -271,7 +271,7 @@ Rigidbody2D:
   m_GameObject: {fileID: 67998832}
   m_BodyType: 1
   m_Simulated: 1
-  m_UseFullKinematicContacts: 0
+  m_UseFullKinematicContacts: 1
   m_UseAutoMass: 0
   m_Mass: 1
   m_LinearDrag: 0
@@ -325,6 +325,21 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   startHealth: 5
+  type: 1
+  deathEvent:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 2011850069}
+        m_MethodName: OnPlayerDeath
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!1 &68819093
 GameObject:
   m_ObjectHideFlags: 0
@@ -339,6 +354,7 @@ GameObject:
   - component: {fileID: 68819098}
   - component: {fileID: 68819097}
   - component: {fileID: 68819099}
+  - component: {fileID: 68819100}
   m_Layer: 0
   m_Name: Enemy1
   m_TagString: Enemy
@@ -470,7 +486,7 @@ Rigidbody2D:
   m_GameObject: {fileID: 68819093}
   m_BodyType: 1
   m_Simulated: 1
-  m_UseFullKinematicContacts: 0
+  m_UseFullKinematicContacts: 1
   m_UseAutoMass: 0
   m_Mass: 1
   m_LinearDrag: 0
@@ -497,6 +513,23 @@ MonoBehaviour:
   projectileSpeed: -5
   shootCooldown: 0.5
   projectileOffset: {x: 0, y: 0}
+--- !u!114 &68819100
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 68819093}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 506e63b609fe0d141a3b74828eedb3d1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  startHealth: 2
+  type: 0
+  deathEvent:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!1 &210830108
 GameObject:
   m_ObjectHideFlags: 0
@@ -696,7 +729,7 @@ GameObject:
   - component: {fileID: 634176467}
   m_Layer: 0
   m_Name: PlayerProjectile
-  m_TagString: Untagged
+  m_TagString: Projectile
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -775,7 +808,7 @@ Rigidbody2D:
   m_GameObject: {fileID: 634176462}
   m_BodyType: 1
   m_Simulated: 1
-  m_UseFullKinematicContacts: 0
+  m_UseFullKinematicContacts: 1
   m_UseAutoMass: 0
   m_Mass: 1
   m_LinearDrag: 0
@@ -815,6 +848,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   upperBound: 4.5
+  lowerBound: -4.5
+  damage: 1
 --- !u!1 &706741336
 GameObject:
   m_ObjectHideFlags: 0
@@ -861,6 +896,20 @@ MonoBehaviour:
     - position: {x: -3.2, y: 4}
       prefab: {fileID: 68819093}
       health: 10
+  allEniemiesDeadEvent:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 2011850069}
+        m_MethodName: OnAllEnemiesDead
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!4 &706741338
 Transform:
   m_ObjectHideFlags: 0
@@ -1093,6 +1142,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1831651026}
   - component: {fileID: 1831651027}
+  - component: {fileID: 1831651028}
   m_Layer: 0
   m_Name: 2HpBar
   m_TagString: Untagged
@@ -1109,7 +1159,7 @@ Transform:
   m_GameObject: {fileID: 1831651025}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0.3, z: 0}
-  m_LocalScale: {x: 0.6666667, y: 0.6666667, z: 1}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 68819096}
   m_RootOrder: 0
@@ -1165,6 +1215,21 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &1831651028
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1831651025}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 22bcc624adbb2854b92a385d3cef645f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  sprites:
+  - {fileID: -4351453914447099463, guid: 02b908bc96a99824980f121807f2c946, type: 3}
+  - {fileID: -5985820871343742124, guid: 02b908bc96a99824980f121807f2c946, type: 3}
 --- !u!1 &1887901777
 GameObject:
   m_ObjectHideFlags: 0
@@ -1177,9 +1242,10 @@ GameObject:
   - component: {fileID: 1887901780}
   - component: {fileID: 1887901779}
   - component: {fileID: 1887901778}
+  - component: {fileID: 1887901782}
   m_Layer: 0
-  m_Name: EnemyProjectile
-  m_TagString: Projectile
+  m_Name: EnemyProjectile1
+  m_TagString: EnemyProjectile
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1210,7 +1276,7 @@ Rigidbody2D:
   m_GameObject: {fileID: 1887901777}
   m_BodyType: 1
   m_Simulated: 1
-  m_UseFullKinematicContacts: 0
+  m_UseFullKinematicContacts: 1
   m_UseAutoMass: 0
   m_Mass: 1
   m_LinearDrag: 0
@@ -1285,6 +1351,21 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1887901782
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1887901777}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e891c8035f10eeb4ba5a1456873eebe4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  upperBound: 4.5
+  lowerBound: -4.5
+  damage: 1
 --- !u!1 &2011850068
 GameObject:
   m_ObjectHideFlags: 0
@@ -1314,6 +1395,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 55b350c2451f6334cb93911c430c13ba, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  levelNumber: 0
   levelChanged:
     m_PersistentCalls:
       m_Calls:

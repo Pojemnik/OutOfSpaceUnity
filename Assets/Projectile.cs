@@ -5,6 +5,9 @@ using UnityEngine;
 public class Projectile : MonoBehaviour
 {
     public float upperBound;
+    public float lowerBound;
+    public int damage;
+
     private Rigidbody2D rb2d;
 
     private void Start()
@@ -12,12 +15,16 @@ public class Projectile : MonoBehaviour
         rb2d = GetComponent<Rigidbody2D>();
     }
 
-    // Update is called once per frame
     void Update()
     {
-        if(rb2d.position.y >= upperBound)
+        if(rb2d.position.y >= upperBound || rb2d.position.y <= lowerBound)
         {
             Destroy(gameObject);
         }
+    }
+
+    public void TargetHit()
+    {
+        Destroy(gameObject);
     }
 }

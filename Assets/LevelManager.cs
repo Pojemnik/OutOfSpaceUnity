@@ -5,16 +5,31 @@ using UnityEngine.Events;
 
 public class LevelManager : MonoBehaviour
 {
+    public int levelNumber;
     public IntEvent levelChanged;
+
+    private int currentLevel;
     void Start()
     {
-        levelChanged.Invoke(0);
+        currentLevel = 0;
+        levelChanged.Invoke(currentLevel);
     }
 
-    // Update is called once per frame
-    void Update()
+    public void OnAllEnemiesDead()
     {
-        
+        currentLevel++;
+        if(currentLevel < levelNumber)
+        {
+            levelChanged.Invoke(currentLevel);
+        }
+        print("You win");
+        //else end the game with you won screen
+    }
+
+    public void OnPlayerDeath()
+    {
+        print("Game over");
+        //End the game with game over screen
     }
 }
 
