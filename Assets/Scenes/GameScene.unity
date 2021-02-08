@@ -296,6 +296,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   speed: {x: 5, y: 5}
   bounds: {x: 6.35, y: 4.5}
+  shootCooldown: 0.5
 --- !u!114 &67998839
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -310,7 +311,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   projectilePrefab: {fileID: 634176462}
   projectileSpeed: 5
-  shootCooldown: 0.5
   projectileOffset: {x: 0, y: 0}
 --- !u!114 &67998840
 MonoBehaviour:
@@ -511,7 +511,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   projectilePrefab: {fileID: 1887901777}
   projectileSpeed: -5
-  shootCooldown: 0.5
   projectileOffset: {x: 0, y: 0}
 --- !u!114 &68819100
 MonoBehaviour:
@@ -847,8 +846,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e891c8035f10eeb4ba5a1456873eebe4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  upperBound: 4.5
-  lowerBound: -4.5
+  bound: 4.7
   damage: 1
 --- !u!1 &706741336
 GameObject:
@@ -1363,8 +1361,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e891c8035f10eeb4ba5a1456873eebe4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  upperBound: 4.5
-  lowerBound: -4.5
+  bound: 4.7
   damage: 1
 --- !u!1 &2011850068
 GameObject:

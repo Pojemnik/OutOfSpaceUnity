@@ -30,7 +30,7 @@ public class Health : MonoBehaviour
                 Die();
             }
             projectile.TargetHit();
-            BroadcastMessage("Damaged", projectile.damage);
+            BroadcastMessage("Damaged", currentHealth);
         }
     }
 

@@ -12,10 +12,20 @@ public class SpawnerController : MonoBehaviour
 
     public void OnLevelChange(int levelNumber)
     {
+        Vector2 maxBounds = new Vector2(6.35f, 4.5f);
         foreach (EnemySpawnData enemyData in levels[levelNumber].enemies)
         {
             GameObject enemy = Instantiate(enemyData.prefab, new Vector3(enemyData.position.x, enemyData.position.y, 0), new Quaternion());
-            var component = enemy.AddComponent<SnakeAi>();
+            SnakeAi ai = enemy.AddComponent<SnakeAi>();
+            ai.speed = 1.5f;
+            ai.moveSquence = new List<SnakeAi.DirectionBound>
+            {
+
+                new SnakeAi.DirectionBound(new Vector2Int(1,0), maxBounds, true),
+                new SnakeAi.DirectionBound(new Vector2Int(0,-1), new Vector2(0, -1), false),
+                new SnakeAi.DirectionBound(new Vector2Int(-1,0), maxBounds, true),
+                new SnakeAi.DirectionBound(new Vector2Int(0,-1), new Vector2(0, -1), false),
+            };
             Health enemyHealth = enemy.GetComponent<Health>();
             enemyHealth.deathEvent.AddListener(OnEnemyDeath);
             enemiesAlive++;
