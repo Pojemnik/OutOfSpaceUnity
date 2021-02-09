@@ -543,9 +543,9 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 68819093}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -8.83, y: 3.87, z: 0}
-  m_LocalScale: {x: 1.5, y: 1.5, z: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 0, y: 0, z: 0}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 17
@@ -1681,15 +1681,15 @@ MonoBehaviour:
     - position: {x: -3, y: 4}
       prefab: {fileID: 1860467794}
       health: 3
-      aiType: 1
+      aiType: 2
     - position: {x: 3, y: 4}
       prefab: {fileID: 1860467794}
       health: 3
-      aiType: 1
+      aiType: 2
     - position: {x: -4, y: 3}
       prefab: {fileID: 68819093}
       health: 2
-      aiType: 0
+      aiType: 2
     - position: {x: -3, y: 3}
       prefab: {fileID: 68819093}
       health: 2
@@ -1703,6 +1703,35 @@ MonoBehaviour:
       health: 2
       aiType: 0
     - position: {x: 0, y: 3}
+      prefab: {fileID: 68819093}
+      health: 2
+      aiType: 0
+  - enemies:
+    - position: {x: -1, y: 4}
+      prefab: {fileID: 1860467794}
+      health: 3
+      aiType: 2
+    - position: {x: 0, y: 4}
+      prefab: {fileID: 1860467794}
+      health: 3
+      aiType: 2
+    - position: {x: 1, y: 4}
+      prefab: {fileID: 1860467794}
+      health: 3
+      aiType: 2
+    - position: {x: -1, y: 3}
+      prefab: {fileID: 68819093}
+      health: 2
+      aiType: 1
+    - position: {x: -0.5, y: 3}
+      prefab: {fileID: 68819093}
+      health: 2
+      aiType: 1
+    - position: {x: 0.5, y: 3}
+      prefab: {fileID: 68819093}
+      health: 2
+      aiType: 0
+    - position: {x: 1, y: 3}
       prefab: {fileID: 68819093}
       health: 2
       aiType: 0
@@ -2346,6 +2375,14 @@ MonoBehaviour:
   backgrounds:
   - {fileID: 21300000, guid: a25e3cb5e91e6604da632bedd9a88b17, type: 3}
   - {fileID: 21300000, guid: 03f7f4a30eb657548899fac1ac508014, type: 3}
+  - {fileID: 21300000, guid: e1288b2e773b94144b135ee2ddb1f253, type: 3}
+  - {fileID: 21300000, guid: 0a236045e7264a143ab1452cfea44dba, type: 3}
+  - {fileID: 21300000, guid: 47109db20a3728443a71e7191eea89ad, type: 3}
+  - {fileID: 21300000, guid: bf69cca19f77990419d735fd4839d9ee, type: 3}
+  - {fileID: 21300000, guid: 0e4e61fc0bb1f5441a6a3f47490fd963, type: 3}
+  - {fileID: 21300000, guid: a7bb4febc67bc2246adbfa0873601723, type: 3}
+  - {fileID: 21300000, guid: e8b65930dc35a9744845915b7b9df5a2, type: 3}
+  - {fileID: 21300000, guid: f24a9677bd79d884f9d1fafd94a434e8, type: 3}
 --- !u!1 &1415239251
 GameObject:
   m_ObjectHideFlags: 0
@@ -3181,8 +3218,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 55b350c2451f6334cb93911c430c13ba, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  levelNumber: 1
-  startLevel: 1
+  levelNumber: 2
+  startLevel: 2
   startJump:
     m_PersistentCalls:
       m_Calls:

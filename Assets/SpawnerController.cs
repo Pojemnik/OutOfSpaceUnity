@@ -23,17 +23,33 @@ public class SpawnerController : MonoBehaviour
             hpBar.SetActive(true);
             switch (enemyData.aiType)
             {
-                case AiType.Snake:
-                    SnakeAi ai = enemy.AddComponent<SnakeAi>();
-                    ai.speed = 1.5f;
-                    ai.moveSquence = new List<SnakeAi.DirectionBound>
+                case AiType.SnakeRight:
+                    {
+                        SnakeAi ai = enemy.AddComponent<SnakeAi>();
+                        ai.speed = 1.5f;
+                        ai.moveSquence = new List<SnakeAi.DirectionBound>
                     {
                 new SnakeAi.DirectionBound(new Vector2Int(1,0), maxBounds, true),
                 new SnakeAi.DirectionBound(new Vector2Int(0,-1), new Vector2(0, -1), false),
                 new SnakeAi.DirectionBound(new Vector2Int(-1,0), maxBounds, true),
                 new SnakeAi.DirectionBound(new Vector2Int(0,-1), new Vector2(0, -1), false)
             };
+                    }
                     break;
+                case AiType.SnakeLeft:
+                    {
+                        SnakeAi ai = enemy.AddComponent<SnakeAi>();
+                        ai.speed = 1.5f;
+                        ai.moveSquence = new List<SnakeAi.DirectionBound>
+                    {
+                new SnakeAi.DirectionBound(new Vector2Int(-1,0), maxBounds, true),
+                new SnakeAi.DirectionBound(new Vector2Int(0,-1), new Vector2(0, -1), false),
+                new SnakeAi.DirectionBound(new Vector2Int(1,0), maxBounds, true),
+                new SnakeAi.DirectionBound(new Vector2Int(0,-1), new Vector2(0, -1), false)
+            };
+                    }
+                    break;
+
                 default:
                     break;
             }
@@ -56,7 +72,8 @@ public class SpawnerController : MonoBehaviour
 
     public enum AiType
     {
-        Snake,
+        SnakeRight,
+        SnakeLeft,
         Static
     }
 
