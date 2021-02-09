@@ -16,19 +16,26 @@ public class SpawnerController : MonoBehaviour
         foreach (EnemySpawnData enemyData in levels[levelNumber].enemies)
         {
             GameObject enemy = Instantiate(enemyData.prefab, new Vector3(enemyData.position.x, enemyData.position.y, 0), new Quaternion());
-            SnakeAi ai = enemy.AddComponent<SnakeAi>();
-            ai.speed = 1.5f;
-            ai.moveSquence = new List<SnakeAi.DirectionBound>
+            switch (enemyData.aiType)
             {
-
+                case AiType.Snake:
+                    SnakeAi ai = enemy.AddComponent<SnakeAi>();
+                    ai.speed = 1.5f;
+                    ai.moveSquence = new List<SnakeAi.DirectionBound>
+                    {
                 new SnakeAi.DirectionBound(new Vector2Int(1,0), maxBounds, true),
                 new SnakeAi.DirectionBound(new Vector2Int(0,-1), new Vector2(0, -1), false),
                 new SnakeAi.DirectionBound(new Vector2Int(-1,0), maxBounds, true),
-                new SnakeAi.DirectionBound(new Vector2Int(0,-1), new Vector2(0, -1), false),
+                new SnakeAi.DirectionBound(new Vector2Int(0,-1), new Vector2(0, -1), false)
             };
+                    break;
+                default:
+                    break;
+            }
             enemy.SetActive(true);
             Health enemyHealth = enemy.GetComponent<Health>();
             enemyHealth.deathEvent.AddListener(OnEnemyDeath);
+            enemyHealth.startHealth = enemyData.health;
             enemiesAlive++;
         }
     }
@@ -36,23 +43,31 @@ public class SpawnerController : MonoBehaviour
     public void OnEnemyDeath()
     {
         enemiesAlive--;
-        if(enemiesAlive == 0)
+        if (enemiesAlive == 0)
         {
             allEniemiesDeadEvent.Invoke();
         }
     }
-}
 
-[System.Serializable]
-public struct LevelSpawningTemplate
-{
-    public List<EnemySpawnData> enemies;
-}
+    public enum AiType
+    {
+        Snake,
+        Static
+    }
 
-[System.Serializable]
-public struct EnemySpawnData
-{
-    public Vector2 position;
-    public GameObject prefab;
-    public int health;
+    [System.Serializable]
+    public struct LevelSpawningTemplate
+    {
+        public List<EnemySpawnData> enemies;
+    }
+
+    [System.Serializable]
+    public struct EnemySpawnData
+    {
+        public Vector2 position;
+        public GameObject prefab;
+        public int health;
+        public AiType aiType;
+
+    }
 }

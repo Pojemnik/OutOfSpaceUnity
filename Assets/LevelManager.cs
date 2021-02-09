@@ -6,6 +6,7 @@ using UnityEngine.Events;
 public class LevelManager : MonoBehaviour
 {
     public int levelNumber;
+    public int startLevel;
     public UnityEvent startJump;
     public IntEvent changeLevel;
     public GameObject player;
@@ -14,7 +15,7 @@ public class LevelManager : MonoBehaviour
     private int currentLevel;
     void Start()
     {
-        currentLevel = 0;
+        currentLevel = startLevel;
         UICanvas.SetActive(true);
         changeLevel.Invoke(currentLevel);
     }
