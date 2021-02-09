@@ -7,6 +7,7 @@ public class SpawnerController : MonoBehaviour
 {
     public List<LevelSpawningTemplate> levels;
     public UnityEvent allEniemiesDeadEvent;
+    public List<GameObject> hpBarsPrefabs;
 
     private int enemiesAlive = 0;
 
@@ -16,6 +17,10 @@ public class SpawnerController : MonoBehaviour
         foreach (EnemySpawnData enemyData in levels[levelNumber].enemies)
         {
             GameObject enemy = Instantiate(enemyData.prefab, new Vector3(enemyData.position.x, enemyData.position.y, 0), new Quaternion());
+            GameObject hpBar = Instantiate(hpBarsPrefabs[enemyData.health - 2]);
+            hpBar.transform.parent = enemy.transform;
+            hpBar.transform.localPosition = new Vector3(0, 0.3f, 0);
+            hpBar.SetActive(true);
             switch (enemyData.aiType)
             {
                 case AiType.Snake:
