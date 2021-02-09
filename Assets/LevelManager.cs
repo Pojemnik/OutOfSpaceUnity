@@ -18,12 +18,15 @@ public class LevelManager : MonoBehaviour
     public void OnAllEnemiesDead()
     {
         currentLevel++;
-        if(currentLevel < levelNumber)
+        if (currentLevel <= levelNumber)
         {
             levelChanged.Invoke(currentLevel);
         }
-        print("You win");
-        //else end the game with you won screen
+        else
+        {
+            print("You win");
+            //end the game with you won screen
+        }
     }
 
     public void OnPlayerDeath()

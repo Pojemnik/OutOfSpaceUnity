@@ -26,6 +26,7 @@ public class SpawnerController : MonoBehaviour
                 new SnakeAi.DirectionBound(new Vector2Int(-1,0), maxBounds, true),
                 new SnakeAi.DirectionBound(new Vector2Int(0,-1), new Vector2(0, -1), false),
             };
+            enemy.SetActive(true);
             Health enemyHealth = enemy.GetComponent<Health>();
             enemyHealth.deathEvent.AddListener(OnEnemyDeath);
             enemiesAlive++;

@@ -8,6 +8,8 @@ public class Health : MonoBehaviour
     public int startHealth;
     public entityType type;
     public UnityEvent deathEvent;
+    public GameObject explosion;
+    public Vector2 explosionOffset;
 
     private int currentHealth;
 
@@ -25,18 +27,20 @@ public class Health : MonoBehaviour
         {
             Projectile projectile = other.GetComponent<Projectile>();
             currentHealth -= projectile.damage;
+            projectile.TargetHit();
+            BroadcastMessage("Damaged", currentHealth);
             if(currentHealth <= 0)
             {
                 Die();
             }
-            projectile.TargetHit();
-            BroadcastMessage("Damaged", currentHealth);
         }
     }
 
     private void Die()
     {
         deathEvent.Invoke();
+        Vector2 explosionPosition = (Vector2)transform.position + explosionOffset;
+        Instantiate(explosion, explosionPosition, transform.rotation).SetActive(true);
         Destroy(gameObject);
     }
 
