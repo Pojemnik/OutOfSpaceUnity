@@ -9,11 +9,13 @@ public class LevelManager : MonoBehaviour
     public UnityEvent startJump;
     public IntEvent changeLevel;
     public GameObject player;
+    public GameObject UICanvas;
 
     private int currentLevel;
     void Start()
     {
         currentLevel = 0;
+        UICanvas.SetActive(true);
         changeLevel.Invoke(currentLevel);
     }
 
@@ -40,6 +42,7 @@ public class LevelManager : MonoBehaviour
     public void OnJumpEnd()
     {
         player.SetActive(true);
+        UICanvas.SetActive(true);
         changeLevel.Invoke(currentLevel);
     }
 }

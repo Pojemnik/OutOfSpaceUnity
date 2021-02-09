@@ -10,7 +10,7 @@ public class SpawnerController : MonoBehaviour
 
     private int enemiesAlive = 0;
 
-    public void OnLevelChange(int levelNumber)
+    public void OnLevelStart(int levelNumber)
     {
         Vector2 maxBounds = new Vector2(6.35f, 4.5f);
         foreach (EnemySpawnData enemyData in levels[levelNumber].enemies)

@@ -6,8 +6,16 @@ using UnityEngine.Events;
 public class PortalController : MonoBehaviour
 {
     public UnityEvent jumpEndEvent;
-    public void OnJumpEnd()
+    public float jumpTime;
+
+    void Awake()
     {
+        StartCoroutine(WaitCoroutine());
+    }
+
+    IEnumerator WaitCoroutine()
+    {
+        yield return new WaitForSecondsRealtime(jumpTime);
         jumpEndEvent.Invoke();
         Destroy(gameObject);
     }
