@@ -7,12 +7,14 @@ public class PlayerController : MonoBehaviour
     public Vector2 speed;
     public Vector2 bounds;
     public float shootCooldown;
+    public GameObject jumpPortalPrefab;
+    public Vector2 portalOffset;
 
     private Rigidbody2D rb2d;
     private Shooter shooter;
     private float shootTimer = 0.0f;
 
-    void Start()
+    void Awake()
     {
         rb2d = GetComponent<Rigidbody2D>();
         shooter = GetComponent<Shooter>();
@@ -45,5 +47,12 @@ public class PlayerController : MonoBehaviour
             move.y += moveInput.y * speed.y * Time.fixedDeltaTime;
         }
         rb2d.MovePosition(move);
+    }
+
+    public void OnJumpStart()
+    {
+        Vector2 portalPosition = (Vector2)transform.position + portalOffset;
+        Instantiate(jumpPortalPrefab, portalPosition, transform.rotation).SetActive(true);
+        gameObject.SetActive(false);
     }
 }

@@ -6,13 +6,15 @@ using UnityEngine.Events;
 public class LevelManager : MonoBehaviour
 {
     public int levelNumber;
-    public IntEvent levelChanged;
+    public UnityEvent startJump;
+    public IntEvent changeLevel;
+    public GameObject player;
 
     private int currentLevel;
     void Start()
     {
         currentLevel = 0;
-        levelChanged.Invoke(currentLevel);
+        changeLevel.Invoke(currentLevel);
     }
 
     public void OnAllEnemiesDead()
@@ -20,7 +22,7 @@ public class LevelManager : MonoBehaviour
         currentLevel++;
         if (currentLevel <= levelNumber)
         {
-            levelChanged.Invoke(currentLevel);
+            startJump.Invoke();
         }
         else
         {
@@ -33,6 +35,12 @@ public class LevelManager : MonoBehaviour
     {
         print("Game over");
         //End the game with game over screen
+    }
+
+    public void OnJumpEnd()
+    {
+        player.SetActive(true);
+        changeLevel.Invoke(currentLevel);
     }
 }
 
