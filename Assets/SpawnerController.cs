@@ -49,7 +49,9 @@ public class SpawnerController : MonoBehaviour
             };
                     }
                     break;
-
+                case AiType.Eight:
+                    enemy.AddComponent<EightAi>().speed = 0.5f;
+                    break;
                 default:
                     break;
             }
@@ -74,7 +76,8 @@ public class SpawnerController : MonoBehaviour
     {
         SnakeRight,
         SnakeLeft,
-        Static
+        Static,
+        Eight
     }
 
     [System.Serializable]
