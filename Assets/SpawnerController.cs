@@ -52,6 +52,13 @@ public class SpawnerController : MonoBehaviour
                 case AiType.Eight:
                     enemy.AddComponent<EightAi>().speed = 0.5f;
                     break;
+                case AiType.Circle:
+                    {
+                        CircleAi ai = enemy.AddComponent<CircleAi>();
+                        ai.speed = 1.0f;
+                        ai.range = 1.8f;
+                    }
+                    break;
                 default:
                     break;
             }
@@ -77,7 +84,8 @@ public class SpawnerController : MonoBehaviour
         SnakeRight,
         SnakeLeft,
         Static,
-        Eight
+        Eight,
+        Circle
     }
 
     [System.Serializable]
