@@ -46,6 +46,11 @@ public class LevelManager : MonoBehaviour
         UICanvas.SetActive(true);
         changeLevel.Invoke(currentLevel);
     }
+
+    public void OnMenuButtonPressed()
+    {
+        UnityEngine.SceneManagement.SceneManager.LoadSceneAsync("MainMenu");
+    }
 }
 
 [System.Serializable]

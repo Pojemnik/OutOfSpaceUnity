@@ -19,12 +19,12 @@ public class ManeuverAi1 : MonoBehaviour
     };
     private StateEnum[] transitions =
     {
-        StateEnum.Down,
-        StateEnum.Up,
-        StateEnum.SwipeRight,
-        StateEnum.SwipeLeft,
-        StateEnum.ArcLeft,
-        StateEnum.ArcRight
+        StateEnum.Down,         //AL
+        StateEnum.Up,           //AR
+        StateEnum.SwipeRight,   //D
+        StateEnum.SwipeLeft,    //U
+        StateEnum.ArcLeft,      //SL
+        StateEnum.ArcRight      //SR
     };
 
     private void Awake()
@@ -65,9 +65,44 @@ public class ManeuverAi1 : MonoBehaviour
         time += Time.fixedDeltaTime;
         if (durations[(int)state] <= time - stateStartTime)
         {
+            RandomizePath();
             state = transitions[(int)state];
             stateStartTime = time;
             startPosition = rb2d.position;
+        }
+    }
+
+    private void RandomizePath()
+    {
+        if (state == StateEnum.Down)
+        {
+            if (UnityEngine.Random.value <= 0.5f)
+            {
+                transitions[2] = StateEnum.SwipeRight;
+                transitions[5] = StateEnum.ArcRight;
+                transitions[1] = StateEnum.Up;
+            }
+            else
+            {
+                transitions[2] = StateEnum.ArcRight;
+                transitions[1] = StateEnum.SwipeRight;
+                transitions[5] = StateEnum.Up;
+            }
+        }
+        if (state == StateEnum.Up)
+        {
+            if (UnityEngine.Random.value <= 0.5f)
+            {
+                transitions[3] = StateEnum.SwipeLeft;
+                transitions[4] = StateEnum.ArcLeft;
+                transitions[0] = StateEnum.Down;
+            }
+            else
+            {
+                transitions[3] = StateEnum.ArcLeft;
+                transitions[0] = StateEnum.SwipeLeft;
+                transitions[4] = StateEnum.Down;
+            }
         }
     }
 
