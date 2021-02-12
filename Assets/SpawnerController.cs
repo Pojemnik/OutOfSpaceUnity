@@ -59,6 +59,22 @@ public class SpawnerController : MonoBehaviour
                         ai.range = 1.8f;
                     }
                     break;
+                case AiType.DiagonalLeft:
+                    {
+                        DiagonalAi ai = enemy.AddComponent<DiagonalAi>();
+                        ai.speed = 1.3f;
+                        ai.range = 1.2f;
+                        ai.direction = 0.5f;
+                    }
+                    break;
+                case AiType.DiagonalRight:
+                    {
+                        DiagonalAi ai = enemy.AddComponent<DiagonalAi>();
+                        ai.speed = 1.3f;
+                        ai.range = 1.2f;
+                        ai.direction = -0.5f;
+                    }
+                    break;
                 default:
                     break;
             }
@@ -85,7 +101,9 @@ public class SpawnerController : MonoBehaviour
         SnakeLeft,
         Static,
         Eight,
-        Circle
+        Circle,
+        DiagonalLeft,
+        DiagonalRight
     }
 
     [System.Serializable]
