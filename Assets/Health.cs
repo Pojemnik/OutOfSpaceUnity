@@ -18,6 +18,16 @@ public class Health : MonoBehaviour
         currentHealth = startHealth;
     }
 
+    public void Hit(int damage)
+    {
+        currentHealth -= damage;
+        BroadcastMessage("Damaged", currentHealth);
+        if (currentHealth <= 0)
+        {
+            Die();
+        }
+    }
+
     private void OnCollisionEnter2D(Collision2D collision)
     {
         GameObject other = collision.gameObject;
@@ -26,13 +36,8 @@ public class Health : MonoBehaviour
         if (enemyShotByPlayer || playerShotByEnemy)
         {
             Projectile projectile = other.GetComponent<Projectile>();
-            currentHealth -= projectile.damage;
             projectile.TargetHit();
-            BroadcastMessage("Damaged", currentHealth);
-            if(currentHealth <= 0)
-            {
-                Die();
-            }
+            Hit(projectile.damage);
         }
     }
 

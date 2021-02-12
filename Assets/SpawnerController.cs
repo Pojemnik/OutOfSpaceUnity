@@ -75,6 +75,15 @@ public class SpawnerController : MonoBehaviour
                         ai.direction = -0.5f;
                     }
                     break;
+                case AiType.Maneuver1:
+                    {
+                        ManeuverAi1 ai = enemy.AddComponent<ManeuverAi1>();
+                        ai.arcSpeed = new Vector2(5.0f, 2.0f);
+                        ai.swipeSpeed = 6.0f;
+                        ai.upDownSpeed = 1.0f;
+                        ai.startDirection = 1;
+                    }
+                    break;
                 default:
                     break;
             }
@@ -103,7 +112,8 @@ public class SpawnerController : MonoBehaviour
         Eight,
         Circle,
         DiagonalLeft,
-        DiagonalRight
+        DiagonalRight,
+        Maneuver1
     }
 
     [System.Serializable]

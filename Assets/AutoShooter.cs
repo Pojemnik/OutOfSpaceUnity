@@ -7,10 +7,10 @@ public class AutoShooter : MonoBehaviour
     public float shootCooldown;
 
     private float shootTimer = 0.0f;
-    private Shooter shooter;
+    private Shooter[] shooters;
     void Start()
     {
-        shooter = GetComponent<Shooter>();
+        shooters = GetComponents<Shooter>();
         shootTimer += Random.Range(0, shootCooldown);
     }
 
@@ -23,7 +23,10 @@ public class AutoShooter : MonoBehaviour
         else
         {
             shootTimer += shootCooldown;
-            shooter.Shoot();
+            foreach (Shooter shooter in shooters)
+            {
+                shooter.Shoot();
+            }
         }
     }
 }
