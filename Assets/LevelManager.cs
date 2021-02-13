@@ -8,6 +8,7 @@ public class LevelManager : MonoBehaviour
     public int levelNumber;
     public int startLevel;
     public UnityEvent startJump;
+    public UnityEvent victory;
     public IntEvent changeLevel;
     public GameObject player;
     public GameObject UICanvas;
@@ -29,15 +30,15 @@ public class LevelManager : MonoBehaviour
         }
         else
         {
-            print("You win");
-            //end the game with you won screen
+            UICanvas.SetActive(true);
+            victory.Invoke();
         }
     }
 
     public void OnPlayerDeath()
     {
-        print("Game over");
-        //End the game with game over screen
+        UICanvas.SetActive(true);
+        UICanvas.GetComponent<LevelUIController>().OnPlayerDeath();
     }
 
     public void OnJumpEnd()

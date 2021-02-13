@@ -16,7 +16,7 @@ public class PauseManager : MonoBehaviour
     private void OnApplicationPause(bool pause)
     {
         systemPause = pause;
-        if(pause)
+        if (pause)
         {
             pausedByUser = true;
         }
@@ -25,7 +25,7 @@ public class PauseManager : MonoBehaviour
     private void OnApplicationFocus(bool focus)
     {
         lostFocus = !focus;
-        if(!focus)
+        if (!focus)
         {
             pausedByUser = true;
         }
@@ -47,6 +47,16 @@ public class PauseManager : MonoBehaviour
         pausedByUser = false;
     }
 
+    public void OnVictory()
+    {
+        canPause = false;
+    }
+
+    public void OnPlayerDeath()
+    {
+        canPause = false;
+    }
+
     private void Update()
     {
         if (time > 0)
@@ -66,7 +76,7 @@ public class PauseManager : MonoBehaviour
                 UICanvas.SetActive(true);
                 pauseStateChanged.Invoke(true);
             }
-            else
+            else if (Time.timeScale == 0)
             {
                 Time.timeScale = 1;
                 UICanvas.SetActive(true);
