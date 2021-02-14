@@ -11,6 +11,7 @@ public class LevelUIController : MonoBehaviour
     private TMPro.TextMeshProUGUI textMesh;
     private GameObject resumeButton;
     private GameObject menuButton;
+    private GameObject restartButton;
     private int currentLevel;
     private Vector2[] buttonsPositions =
     {
@@ -24,11 +25,12 @@ public class LevelUIController : MonoBehaviour
         textMesh = GetComponentInChildren<TMPro.TextMeshProUGUI>();
         resumeButton = transform.Find("ResumeButton").gameObject;
         menuButton = transform.Find("MenuButton").gameObject;
+        restartButton = transform.Find("RestartButton").gameObject;
     }
 
     public void OnLevelChange(int level)
     {
-        PlaceButtons(-1, -1);
+        PlaceButtons(-1, -1, -1);
         textMesh.text = string.Format("Level {0}", level + 1);
         currentLevel = level;
         StartCoroutine(WaitCoroutine());
@@ -39,7 +41,7 @@ public class LevelUIController : MonoBehaviour
         if (pause)
         {
             textMesh.text = string.Format("Game paused");
-            PlaceButtons(1, 0);
+            PlaceButtons(1, 0, 2);
         }
         else
         {
@@ -50,34 +52,32 @@ public class LevelUIController : MonoBehaviour
     public void OnPlayerDeath()
     {
         textMesh.text = string.Format("Game over");
-        PlaceButtons(0, -1);
+        PlaceButtons(0, -1, 1);
     }
 
     public void OnVictory()
     {
         textMesh.text = string.Format("You win");
-        PlaceButtons(0, -1);
+        PlaceButtons(0, -1, -1);
     }
 
-    private void PlaceButtons(int menu, int resume)
+    private void PlaceButtons(int menu, int resume, int restart)
     {
-        if (menu == -1)
+        PlaceButton(menuButton, menu);
+        PlaceButton(resumeButton, resume);
+        PlaceButton(restartButton, restart);
+    }
+
+    private void PlaceButton(GameObject button, int position)
+    {
+        if (position == -1)
         {
-            menuButton.SetActive(false);
+            button.SetActive(false);
         }
         else
         {
-            menuButton.SetActive(true);
-            menuButton.transform.localPosition = buttonsPositions[menu];
-        }
-        if (resume == -1)
-        {
-            resumeButton.SetActive(false);
-        }
-        else
-        {
-            resumeButton.SetActive(true);
-            resumeButton.transform.localPosition = buttonsPositions[resume];
+            button.SetActive(true);
+            button.transform.localPosition = buttonsPositions[position];
         }
     }
 

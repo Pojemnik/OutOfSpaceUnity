@@ -13,6 +13,11 @@ public class PauseManager : MonoBehaviour
     private float time = 0;
     private bool canPause = true;
 
+    private void Awake()
+    {
+        Time.timeScale = 1;
+    }
+
     private void OnApplicationPause(bool pause)
     {
         systemPause = pause;

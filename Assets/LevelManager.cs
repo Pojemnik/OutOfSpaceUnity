@@ -48,6 +48,11 @@ public class LevelManager : MonoBehaviour
         changeLevel.Invoke(currentLevel);
     }
 
+    public void OnRestartButtonPressed()
+    {
+        UnityEngine.SceneManagement.SceneManager.LoadSceneAsync("GameScene");
+    }
+
     public void OnMenuButtonPressed()
     {
         UnityEngine.SceneManagement.SceneManager.LoadSceneAsync("MainMenu");
