@@ -5,9 +5,10 @@ using UnityEngine.Events;
 
 public class SpawnerController : MonoBehaviour
 {
-    public List<LevelSpawningTemplate> levels;
+    public List<LevelSpawnData> levels;
     public UnityEvent allEniemiesDeadEvent;
     public List<GameObject> hpBarsPrefabs;
+    public List<GameObject> enemiesPrefabs;
 
     private int enemiesAlive = 0;
 
@@ -16,7 +17,7 @@ public class SpawnerController : MonoBehaviour
         Vector2 maxBounds = new Vector2(6.35f, 4.5f);
         foreach (EnemySpawnData enemyData in levels[levelNumber].enemies)
         {
-            GameObject enemy = Instantiate(enemyData.prefab, new Vector3(enemyData.position.x, enemyData.position.y, 0), new Quaternion());
+            GameObject enemy = Instantiate(enemiesPrefabs[enemyData.prefabID], new Vector3(enemyData.position.x, enemyData.position.y, 0), new Quaternion());
             GameObject hpBar = Instantiate(hpBarsPrefabs[enemyData.health - 2]);
             hpBar.transform.parent = enemy.transform;
             hpBar.transform.localPosition = new Vector3(0, 0.3f, 0);
@@ -109,34 +110,5 @@ public class SpawnerController : MonoBehaviour
         {
             allEniemiesDeadEvent.Invoke();
         }
-    }
-
-    public enum AiType
-    {
-        SnakeRight,
-        SnakeLeft,
-        Static,
-        Eight,
-        CircleLeft,
-        CircleRight,
-        DiagonalLeft,
-        DiagonalRight,
-        Maneuver1
-    }
-
-    [System.Serializable]
-    public struct LevelSpawningTemplate
-    {
-        public List<EnemySpawnData> enemies;
-    }
-
-    [System.Serializable]
-    public struct EnemySpawnData
-    {
-        public Vector2 position;
-        public GameObject prefab;
-        public int health;
-        public AiType aiType;
-
     }
 }

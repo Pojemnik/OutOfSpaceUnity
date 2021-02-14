@@ -2346,201 +2346,16 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   levels:
-  - enemies:
-    - position: {x: -6, y: 4}
-      prefab: {fileID: 68819093}
-      health: 2
-      aiType: 0
-    - position: {x: -5.3, y: 4}
-      prefab: {fileID: 68819093}
-      health: 2
-      aiType: 0
-    - position: {x: -4.6, y: 4}
-      prefab: {fileID: 68819093}
-      health: 2
-      aiType: 0
-    - position: {x: -3.9, y: 4}
-      prefab: {fileID: 68819093}
-      health: 2
-      aiType: 0
-    - position: {x: -3.2, y: 4}
-      prefab: {fileID: 68819093}
-      health: 2
-      aiType: 0
-  - enemies:
-    - position: {x: -3, y: 4}
-      prefab: {fileID: 1860467794}
-      health: 3
-      aiType: 2
-    - position: {x: 3, y: 4}
-      prefab: {fileID: 1860467794}
-      health: 3
-      aiType: 2
-    - position: {x: -4, y: 3}
-      prefab: {fileID: 68819093}
-      health: 2
-      aiType: 0
-    - position: {x: -3, y: 3}
-      prefab: {fileID: 68819093}
-      health: 2
-      aiType: 0
-    - position: {x: -2, y: 3}
-      prefab: {fileID: 68819093}
-      health: 2
-      aiType: 0
-    - position: {x: -1, y: 3}
-      prefab: {fileID: 68819093}
-      health: 2
-      aiType: 0
-    - position: {x: 0, y: 3}
-      prefab: {fileID: 68819093}
-      health: 2
-      aiType: 0
-  - enemies:
-    - position: {x: -1, y: 4}
-      prefab: {fileID: 1860467794}
-      health: 3
-      aiType: 2
-    - position: {x: 0, y: 4}
-      prefab: {fileID: 1860467794}
-      health: 3
-      aiType: 2
-    - position: {x: 1, y: 4}
-      prefab: {fileID: 1860467794}
-      health: 3
-      aiType: 2
-    - position: {x: -1.2, y: 3}
-      prefab: {fileID: 68819093}
-      health: 2
-      aiType: 1
-    - position: {x: -0.6, y: 3}
-      prefab: {fileID: 68819093}
-      health: 2
-      aiType: 1
-    - position: {x: 0.6, y: 3}
-      prefab: {fileID: 68819093}
-      health: 2
-      aiType: 0
-    - position: {x: 1.2, y: 3}
-      prefab: {fileID: 68819093}
-      health: 2
-      aiType: 0
-  - enemies:
-    - position: {x: -3, y: 3.2}
-      prefab: {fileID: 478024986}
-      health: 4
-      aiType: 3
-    - position: {x: -1.5, y: 3.2}
-      prefab: {fileID: 478024986}
-      health: 4
-      aiType: 3
-    - position: {x: 0, y: 3.2}
-      prefab: {fileID: 478024986}
-      health: 4
-      aiType: 3
-    - position: {x: 1.5, y: 3.2}
-      prefab: {fileID: 478024986}
-      health: 4
-      aiType: 3
-    - position: {x: 3, y: 3.2}
-      prefab: {fileID: 478024986}
-      health: 4
-      aiType: 3
-    - position: {x: -1, y: 4}
-      prefab: {fileID: 1860467794}
-      health: 3
-      aiType: 2
-    - position: {x: 0, y: 4}
-      prefab: {fileID: 1860467794}
-      health: 3
-      aiType: 2
-    - position: {x: 1, y: 4}
-      prefab: {fileID: 1860467794}
-      health: 3
-      aiType: 2
-  - enemies:
-    - position: {x: -0.5, y: 4}
-      prefab: {fileID: 68819093}
-      health: 2
-      aiType: 1
-    - position: {x: -1.5, y: 4}
-      prefab: {fileID: 68819093}
-      health: 2
-      aiType: 1
-    - position: {x: 0.5, y: 4}
-      prefab: {fileID: 68819093}
-      health: 2
-      aiType: 0
-    - position: {x: 1.5, y: 4}
-      prefab: {fileID: 68819093}
-      health: 2
-      aiType: 0
-    - position: {x: -3, y: 2.5}
-      prefab: {fileID: 478024986}
-      health: 4
-      aiType: 4
-    - position: {x: -1.5, y: 2.5}
-      prefab: {fileID: 478024986}
-      health: 4
-      aiType: 4
-    - position: {x: 0, y: 2.5}
-      prefab: {fileID: 478024986}
-      health: 4
-      aiType: 4
-    - position: {x: 1.5, y: 2.5}
-      prefab: {fileID: 478024986}
-      health: 4
-      aiType: 4
-    - position: {x: 3, y: 2.5}
-      prefab: {fileID: 478024986}
-      health: 4
-      aiType: 4
-  - enemies:
-    - position: {x: 1, y: 3}
-      prefab: {fileID: 478024986}
-      health: 4
-      aiType: 5
-    - position: {x: -1, y: 3}
-      prefab: {fileID: 478024986}
-      health: 4
-      aiType: 6
-    - position: {x: 1.7, y: 3}
-      prefab: {fileID: 478024986}
-      health: 4
-      aiType: 5
-    - position: {x: -1.7, y: 3}
-      prefab: {fileID: 478024986}
-      health: 4
-      aiType: 6
-    - position: {x: 2.4, y: 3}
-      prefab: {fileID: 478024986}
-      health: 4
-      aiType: 5
-    - position: {x: -2.4, y: 3}
-      prefab: {fileID: 478024986}
-      health: 4
-      aiType: 6
-    - position: {x: 3.1, y: 3}
-      prefab: {fileID: 478024986}
-      health: 4
-      aiType: 5
-    - position: {x: -3.1, y: 3}
-      prefab: {fileID: 478024986}
-      health: 4
-      aiType: 6
-    - position: {x: -5, y: 3}
-      prefab: {fileID: 478024986}
-      health: 4
-      aiType: 5
-    - position: {x: 5, y: 3}
-      prefab: {fileID: 478024986}
-      health: 4
-      aiType: 6
-  - enemies:
-    - position: {x: -0.5, y: 4}
-      prefab: {fileID: 511312742}
-      health: 5
-      aiType: 7
+  - {fileID: 11400000, guid: 3fdde5af6632b1445837474e6411b13a, type: 2}
+  - {fileID: 11400000, guid: 2a9774a64460bc8489b0d8a866059c5d, type: 2}
+  - {fileID: 11400000, guid: cdfc98b8d3779ab408fef1dc512577cc, type: 2}
+  - {fileID: 11400000, guid: b6b706361a55cc942ae4990e509ca8b7, type: 2}
+  - {fileID: 11400000, guid: 26f5ef9f978233a41b698644beaa62c9, type: 2}
+  - {fileID: 11400000, guid: a0fc0acef87a0df40aec690140da0e8f, type: 2}
+  - {fileID: 11400000, guid: f5caf0363e4750b4abef20bd84b83d44, type: 2}
+  - {fileID: 11400000, guid: 94c9fd18ce22ce9448783129586181c7, type: 2}
+  - {fileID: 11400000, guid: 87b54f592db33e149ba56e4952de55ba, type: 2}
+  - {fileID: 11400000, guid: 94c9fd18ce22ce9448783129586181c7, type: 2}
   allEniemiesDeadEvent:
     m_PersistentCalls:
       m_Calls:
@@ -2560,6 +2375,11 @@ MonoBehaviour:
   - {fileID: 946836108}
   - {fileID: 293464916}
   - {fileID: 210830108}
+  enemiesPrefabs:
+  - {fileID: 68819093}
+  - {fileID: 1860467794}
+  - {fileID: 478024986}
+  - {fileID: 511312742}
 --- !u!4 &706741338
 Transform:
   m_ObjectHideFlags: 0
@@ -4962,8 +4782,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 55b350c2451f6334cb93911c430c13ba, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  levelNumber: 6
-  startLevel: 0
+  levelNumber: 10
+  startLevel: 8
   startJump:
     m_PersistentCalls:
       m_Calls:

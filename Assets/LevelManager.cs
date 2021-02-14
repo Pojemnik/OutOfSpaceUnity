@@ -24,7 +24,7 @@ public class LevelManager : MonoBehaviour
     public void OnAllEnemiesDead()
     {
         currentLevel++;
-        if (currentLevel <= levelNumber)
+        if (currentLevel < levelNumber)
         {
             startJump.Invoke();
         }
