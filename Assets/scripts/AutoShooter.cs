@@ -5,6 +5,7 @@ using UnityEngine;
 public class AutoShooter : MonoBehaviour
 {
     public float shootCooldown;
+    public float cooldownVariation;
 
     private float shootTimer = 0.0f;
     private Shooter[] shooters;
@@ -22,7 +23,7 @@ public class AutoShooter : MonoBehaviour
         }
         else
         {
-            shootTimer += shootCooldown;
+            shootTimer += shootCooldown + Random.Range(-cooldownVariation, cooldownVariation);
             foreach (Shooter shooter in shooters)
             {
                 shooter.Shoot();
