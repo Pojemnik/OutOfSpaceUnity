@@ -10,6 +10,7 @@ public class Health : MonoBehaviour
     public UnityEvent deathEvent;
     public GameObject explosion;
     public Vector2 explosionOffset;
+    public Vector2 hpBarOffset;
 
     private int currentHealth;
 

@@ -17,7 +17,8 @@ public enum AiType
     CircleRight,
     DiagonalLeft,
     DiagonalRight,
-    Maneuver1
+    Maneuver1,
+    Maneuver2
 }
 
 [System.Serializable]

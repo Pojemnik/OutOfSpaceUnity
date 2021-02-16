@@ -18,10 +18,6 @@ public class SpawnerController : MonoBehaviour
         foreach (EnemySpawnData enemyData in levels[levelNumber].enemies)
         {
             GameObject enemy = Instantiate(enemiesPrefabs[enemyData.prefabID], new Vector3(enemyData.position.x, enemyData.position.y, 0), new Quaternion());
-            GameObject hpBar = Instantiate(hpBarsPrefabs[enemyData.health - 2]);
-            hpBar.transform.parent = enemy.transform;
-            hpBar.transform.localPosition = new Vector3(0, 0.3f, 0);
-            hpBar.SetActive(true);
             switch (enemyData.aiType)
             {
                 case AiType.SnakeRight:
@@ -92,6 +88,11 @@ public class SpawnerController : MonoBehaviour
                         ai.startDirection = 1;
                     }
                     break;
+                case AiType.Maneuver2:
+                    {
+                        ManeuverAi2 ai = enemy.AddComponent<ManeuverAi2>();
+                    }
+                    break;
                 default:
                     break;
             }
@@ -99,6 +100,10 @@ public class SpawnerController : MonoBehaviour
             Health enemyHealth = enemy.GetComponent<Health>();
             enemyHealth.deathEvent.AddListener(OnEnemyDeath);
             enemyHealth.startHealth = enemyData.health;
+            GameObject hpBar = Instantiate(hpBarsPrefabs[enemyData.health - 2]);
+            hpBar.transform.parent = enemy.transform;
+            hpBar.transform.localPosition = new Vector2(0, 0.3f) + enemyHealth.hpBarOffset;
+            hpBar.SetActive(true);
             enemiesAlive++;
         }
     }

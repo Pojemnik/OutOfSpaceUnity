@@ -5,71 +5,161 @@ using System;
 
 public class ManeuverAi2 : MonoBehaviour
 {
-    public Vector2 arcSpeed;
-    public int startDirection;
-    public float upDownSpeed;
-    public float swipeSpeed;
-
-    private float time = 0;
+    private float speed = 3;
+    private float stateTime = 0.0f;
+    private Vector2 lastPosition;
+    private float lastRotation;
+    private StateStruct nextState;
+    private readonly float[] stateDurations = { 0, 0.6f, 1.2f, 1.2f };
     private Rigidbody2D rb2d;
-    private Vector2 startPosition;
-    private StateEnum state = StateEnum.ArcLeft;
-    private float stateStartTime = 0;
-    private float[] durations =
-    {
-        (float)(Math.PI), (float)(Math.PI), (float)(Math.PI/2), (float)(Math.PI/2), (float)(Math.PI/2), (float)(Math.PI/2)
-    };
+    private MoveMode lastMode;
+    private AutoShooter shooter;
 
     private void Awake()
     {
         rb2d = GetComponent<Rigidbody2D>();
-        startPosition = rb2d.position;
+        shooter = GetComponent<AutoShooter>();
+        nextState = GenerateNextState();
+        lastMode = MoveMode.Regular;
+        lastPosition = rb2d.position;
     }
 
-    private void FixedUpdate()
+    private void Update()
     {
-        float duration = time - stateStartTime;
-        Vector2 pos;
-        switch (state)
+        stateTime += Time.deltaTime;
+        if (stateTime >= nextState.duration)
         {
-            case StateEnum.ArcLeft:
-                pos = new Vector2((float)-Math.Sin(duration / 2), (float)Math.Sin(Math.PI + duration)) * arcSpeed;
+            stateTime -= nextState.duration;
+            lastPosition = nextState.finalPosition;
+            lastRotation = nextState.targetRotation;
+            nextState = GenerateNextState();
+        }
+        rb2d.position = Vector2.Lerp(lastPosition, nextState.finalPosition, stateTime / nextState.duration);
+        rb2d.rotation = Mathf.LerpAngle(lastRotation, nextState.targetRotation, stateTime / nextState.duration);
+    }
+
+    private StateStruct GenerateNextState()
+    {
+        StateStruct newState = new StateStruct();
+        MoveMode mode = MoveMode.Regular;
+        if (Math.Abs(lastPosition.x) > 4.2f && lastMode == MoveMode.Regular)
+        {
+            mode = MoveMode.Rotate;
+        }
+        if (lastMode == MoveMode.Rotate)
+        {
+            mode = MoveMode.Dash;
+        }
+        if (lastMode == MoveMode.Dash)
+        {
+            mode = MoveMode.Unrotate;
+        }
+        switch (mode)
+        {
+            case MoveMode.Regular:
+                newState.targetVariation = UnityEngine.Random.insideUnitCircle;
+                newState.targetSector = nextState.targetSector;
+                newState.targetRotation = 0;
+                switch (newState.targetSector.x)
+                {
+                    case 0:
+                        newState.targetSector.x += UnityEngine.Random.Range(-1, 2);
+                        break;
+                    case -1:
+                        newState.targetSector.x += UnityEngine.Random.Range(0, 2);
+                        break;
+                    case 1:
+                        newState.targetSector.x += UnityEngine.Random.Range(-1, 1);
+                        break;
+                    default:
+                        //This should never happen
+                        newState.targetSector.x = 0;
+                        break;
+                }
+                switch (newState.targetSector.y)
+                {
+                    case 0:
+                        newState.targetSector.y += UnityEngine.Random.Range(-1, 2);
+                        break;
+                    case 1:
+                        newState.targetSector.y += UnityEngine.Random.Range(-1, 1);
+                        break;
+                    case -1:
+                        newState.targetSector.y += UnityEngine.Random.Range(0, 2);
+                        break;
+                    default:
+                        //This should never happen
+                        newState.targetSector.y = 0;
+                        break;
+                }
+                newState.finalPosition = SectorToPosition(newState.targetSector) + newState.targetVariation;
+                shooter.enabled = true;
                 break;
-            case StateEnum.ArcRight:
-                pos = new Vector2((float)Math.Sin(duration / 2), (float)Math.Sin(Math.PI + duration)) * arcSpeed;
+            case MoveMode.Dash:
+                newState.targetVariation = Vector2.zero;
+                newState.targetSector = nextState.targetSector;
+                newState.targetSector.x = -newState.targetSector.x;
+                newState.finalPosition = nextState.finalPosition;
+                newState.finalPosition.x = -newState.finalPosition.x;
+                newState.targetRotation = nextState.targetRotation;
+                shooter.enabled = false;
                 break;
-            case StateEnum.SwipeLeft:
-                pos = new Vector2((float)-Math.Sin(duration) * swipeSpeed, 0.0f);
+            case MoveMode.Rotate:
+                newState.targetVariation = Vector2.zero;
+                newState.targetSector = nextState.targetSector;
+                newState.finalPosition = nextState.finalPosition;
+                if (newState.finalPosition.x > 0)
+                {
+                    newState.targetRotation = -90;
+                }
+                else
+                {
+                    newState.targetRotation = 90;
+                }
+                shooter.enabled = false;
                 break;
-            case StateEnum.SwipeRight:
-                pos = new Vector2((float)Math.Sin(duration) * swipeSpeed, 0.0f);
-                break;
-            case StateEnum.Up:
-                pos = new Vector2(0.0f, (float)Math.Sin(duration) * swipeSpeed);
-                break;
-            case StateEnum.Down:
-                pos = new Vector2(0.0f, (float)-Math.Sin(duration) * swipeSpeed);
+            case MoveMode.Unrotate:
+                newState.targetVariation = Vector2.zero;
+                newState.targetSector = nextState.targetSector;
+                newState.finalPosition = nextState.finalPosition;
+                newState.targetRotation = 0;
+                shooter.enabled = false;
                 break;
             default:
-                pos = new Vector2(0, 0);
                 break;
         }
-        rb2d.MovePosition(startPosition + pos);
-        time += Time.fixedDeltaTime;
-        if (durations[(int)state] <= time - stateStartTime)
+        if (mode == MoveMode.Regular)
         {
-            state = transitions[(int)state];
-            stateStartTime = time;
-            startPosition = rb2d.position;
+            newState.duration = Vector2.Distance(newState.finalPosition, nextState.finalPosition) / speed;
         }
+        else
+        {
+            newState.duration = stateDurations[(int)mode];
+        }
+        lastMode = mode;
+        return newState;
     }
-    private enum StateEnum
+
+    private Vector2 SectorToPosition(Vector2Int sector)
     {
-        ArcLeft = 0,
-        ArcRight,
-        Down,
-        Up,
-        SwipeLeft,
-        SwipeRight
+        return new Vector2(sector.x * 4.0f, sector.y * 3);
+    }
+
+    private enum MoveMode
+    {
+        Regular = 0,
+        Dash,
+        Rotate,
+        Unrotate
+    }
+
+    [System.Serializable]
+    public struct StateStruct
+    {
+        public Vector2Int targetSector;
+        public Vector2 targetVariation;
+        public Vector2 finalPosition;
+        public float targetRotation;
+        public float duration;
     }
 }
