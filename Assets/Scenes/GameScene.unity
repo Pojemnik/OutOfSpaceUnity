@@ -357,6 +357,7 @@ MonoBehaviour:
         m_CallState: 2
   explosion: {fileID: 906982335}
   explosionOffset: {x: 0, y: 0}
+  hpBarOffset: {x: 0, y: 0}
 --- !u!82 &67998841
 AudioSource:
   m_ObjectHideFlags: 0
@@ -646,6 +647,7 @@ MonoBehaviour:
       m_Calls: []
   explosion: {fileID: 906982335}
   explosionOffset: {x: 0, y: 0}
+  hpBarOffset: {x: 0, y: 0}
 --- !u!114 &68819101
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1617,6 +1619,7 @@ MonoBehaviour:
       m_Calls: []
   explosion: {fileID: 906982335}
   explosionOffset: {x: 0, y: 0}
+  hpBarOffset: {x: 0, y: 0}
 --- !u!114 &478024989
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1921,6 +1924,7 @@ MonoBehaviour:
       m_Calls: []
   explosion: {fileID: 906982335}
   explosionOffset: {x: 0, y: 0}
+  hpBarOffset: {x: 0, y: 0}
 --- !u!114 &511312745
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2356,9 +2360,8 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 26f5ef9f978233a41b698644beaa62c9, type: 2}
   - {fileID: 11400000, guid: a0fc0acef87a0df40aec690140da0e8f, type: 2}
   - {fileID: 11400000, guid: f5caf0363e4750b4abef20bd84b83d44, type: 2}
-  - {fileID: 11400000, guid: 94c9fd18ce22ce9448783129586181c7, type: 2}
+  - {fileID: 11400000, guid: 1f92525072a44064bbc5f9aacf6236be, type: 2}
   - {fileID: 11400000, guid: 87b54f592db33e149ba56e4952de55ba, type: 2}
-  - {fileID: 11400000, guid: 94c9fd18ce22ce9448783129586181c7, type: 2}
   allEniemiesDeadEvent:
     m_PersistentCalls:
       m_Calls:
@@ -3101,7 +3104,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 988005829}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -12.85, y: -2.55, z: 0}
+  m_LocalPosition: {x: -8.8, y: -2.43, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -4459,6 +4462,7 @@ MonoBehaviour:
       m_Calls: []
   explosion: {fileID: 906982335}
   explosionOffset: {x: 0, y: 0}
+  hpBarOffset: {x: 0, y: 0}
 --- !u!114 &1860467797
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4787,7 +4791,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 55b350c2451f6334cb93911c430c13ba, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  levelNumber: 10
+  levelNumber: 9
   startLevel: 0
   startJump:
     m_PersistentCalls:
@@ -5020,6 +5024,7 @@ MonoBehaviour:
       m_Calls: []
   explosion: {fileID: 906982335}
   explosionOffset: {x: 0, y: 0}
+  hpBarOffset: {x: 0, y: 0.2}
 --- !u!114 &2035156458
 MonoBehaviour:
   m_ObjectHideFlags: 0

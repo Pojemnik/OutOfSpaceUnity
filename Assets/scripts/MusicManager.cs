@@ -24,6 +24,7 @@ public class MusicManager : MonoBehaviour
             currentMusic++;
             currentMusic %= music.Count;
             audioSource.clip = music[currentMusic];
+            audioSource.Play();
         }
     }
 }
