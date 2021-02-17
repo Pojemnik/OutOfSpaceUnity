@@ -15,9 +15,9 @@ public class LevelUIController : MonoBehaviour
     private int currentLevel;
     private Vector2[] buttonsPositions =
     {
-        new Vector2(0, 20),
-        new Vector2(0, -45),
-        new Vector2(0, -110)
+        new Vector2(0, 65),
+        new Vector2(0, -5),
+        new Vector2(0, -75)
     };
 
     void Awake()
