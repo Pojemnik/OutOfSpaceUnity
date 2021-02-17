@@ -16,13 +16,11 @@ public class ButtonController : MonoBehaviour, IPointerEnterHandler, IPointerExi
 
     public void OnPointerEnter(PointerEventData eventData)
     {
-        Debug.Log("Pointer Enter");
         cursorController.OnPointerButtonEnter(gameObject);
     }
 
     public void OnPointerExit(PointerEventData eventData)
     {
-        Debug.Log("Pointer Exit");
         cursorController.OnPointerButtonExit(gameObject);
     }
 }
