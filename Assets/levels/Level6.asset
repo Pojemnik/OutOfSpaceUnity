@@ -45,7 +45,7 @@ MonoBehaviour:
     prefabID: 1
     health: 3
     aiType: 2
-  - position: {x: 4, y: 0}
+  - position: {x: 4, y: 2.5}
     prefabID: 2
     health: 4
     aiType: 5

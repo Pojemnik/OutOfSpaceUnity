@@ -26,4 +26,9 @@ public class Projectile : MonoBehaviour
     {
         Destroy(gameObject);
     }
+
+    public void TargetHit(int _)
+    {
+        Destroy(gameObject);
+    }
 }

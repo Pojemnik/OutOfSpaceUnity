@@ -12,4 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9c17758fcbab5264fad62f272fb0609d, type: 3}
   m_Name: PlaceholderLevel
   m_EditorClassIdentifier: 
-  enemies: []
+  enemies:
+  - position: {x: 0, y: -3}
+    prefabID: 1
+    health: 3
+    aiType: 2

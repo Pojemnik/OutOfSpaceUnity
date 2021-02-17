@@ -316,6 +316,7 @@ MonoBehaviour:
   projectileSpeed: 6
   projectileOffset: {x: 0, y: 0}
   shootSound: {fileID: 8300000, guid: 980aa320e2649c647b7aaa813ff97970, type: 3}
+  levelManager: {fileID: 2011850069}
 --- !u!114 &67998840
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -628,6 +629,7 @@ MonoBehaviour:
   projectileSpeed: -5
   projectileOffset: {x: 0, y: 0}
   shootSound: {fileID: 8300000, guid: 75b238ff9c3ef324490ddc8f65428ede, type: 3}
+  levelManager: {fileID: 2011850069}
 --- !u!114 &68819100
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1050,7 +1052,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 15
+  m_RootOrder: 14
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &210830108
 GameObject:
@@ -1724,6 +1726,7 @@ MonoBehaviour:
   projectileSpeed: -5
   projectileOffset: {x: 0, y: 0}
   shootSound: {fileID: 8300000, guid: 75b238ff9c3ef324490ddc8f65428ede, type: 3}
+  levelManager: {fileID: 2011850069}
 --- !u!60 &478024991
 PolygonCollider2D:
   m_ObjectHideFlags: 0
@@ -2029,6 +2032,7 @@ MonoBehaviour:
   projectileSpeed: -6
   projectileOffset: {x: 0.2, y: -0.2}
   shootSound: {fileID: 8300000, guid: 56c904899bce3984fa2783ca6349ead2, type: 3}
+  levelManager: {fileID: 2011850069}
 --- !u!60 &511312747
 PolygonCollider2D:
   m_ObjectHideFlags: 0
@@ -2179,6 +2183,7 @@ MonoBehaviour:
   projectileSpeed: -6
   projectileOffset: {x: -0.2, y: -0.2}
   shootSound: {fileID: 8300000, guid: 56c904899bce3984fa2783ca6349ead2, type: 3}
+  levelManager: {fileID: 0}
 --- !u!1 &519420028
 GameObject:
   m_ObjectHideFlags: 0
@@ -2510,6 +2515,9 @@ MonoBehaviour:
   - {fileID: 11400000, guid: f5caf0363e4750b4abef20bd84b83d44, type: 2}
   - {fileID: 11400000, guid: 1f92525072a44064bbc5f9aacf6236be, type: 2}
   - {fileID: 11400000, guid: 87b54f592db33e149ba56e4952de55ba, type: 2}
+  - {fileID: 11400000, guid: 94c9fd18ce22ce9448783129586181c7, type: 2}
+  - {fileID: 11400000, guid: 94c9fd18ce22ce9448783129586181c7, type: 2}
+  - {fileID: 11400000, guid: 94c9fd18ce22ce9448783129586181c7, type: 2}
   allEniemiesDeadEvent:
     m_PersistentCalls:
       m_Calls:
@@ -2567,7 +2575,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &750464270
 RectTransform:
   m_ObjectHideFlags: 0
@@ -2582,7 +2590,7 @@ RectTransform:
   - {fileID: 305425092}
   - {fileID: 578568576}
   m_Father: {fileID: 1415239255}
-  m_RootOrder: 0
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -3026,7 +3034,7 @@ RectTransform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1415239255}
-  m_RootOrder: 1
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -3427,7 +3435,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 14
+  m_RootOrder: 15
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1159460812
 GameObject:
@@ -3667,6 +3675,8 @@ MonoBehaviour:
   - {fileID: 21300000, guid: a7bb4febc67bc2246adbfa0873601723, type: 3}
   - {fileID: 21300000, guid: e8b65930dc35a9744845915b7b9df5a2, type: 3}
   - {fileID: 21300000, guid: f24a9677bd79d884f9d1fafd94a434e8, type: 3}
+  - {fileID: 21300000, guid: ffabab29e60630b42a5caf7e0a8617c0, type: 3}
+  - {fileID: 21300000, guid: 1aa8afe962d599444ab243a6f31c7371, type: 3}
 --- !u!1 &1415239251
 GameObject:
   m_ObjectHideFlags: 0
@@ -3758,8 +3768,8 @@ RectTransform:
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 0, y: 0, z: 0}
   m_Children:
-  - {fileID: 750464270}
   - {fileID: 909157411}
+  - {fileID: 750464270}
   - {fileID: 872584808}
   - {fileID: 1843589769}
   - {fileID: 1428442667}
@@ -3809,6 +3819,7 @@ MonoBehaviour:
           m_BoolArgument: 0
         m_CallState: 2
   displayTime: 2
+  cursor: {fileID: 750464269}
 --- !u!1 &1428442666
 GameObject:
   m_ObjectHideFlags: 0
@@ -4775,6 +4786,7 @@ MonoBehaviour:
   projectileSpeed: -8
   projectileOffset: {x: 0, y: 0}
   shootSound: {fileID: 8300000, guid: 75b238ff9c3ef324490ddc8f65428ede, type: 3}
+  levelManager: {fileID: 2011850069}
 --- !u!60 &1860467799
 PolygonCollider2D:
   m_ObjectHideFlags: 0
@@ -5337,6 +5349,7 @@ MonoBehaviour:
   projectileSpeed: -6
   projectileOffset: {x: -0.2, y: -0.2}
   shootSound: {fileID: 8300000, guid: 56c904899bce3984fa2783ca6349ead2, type: 3}
+  levelManager: {fileID: 0}
 --- !u!114 &2035156460
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5353,6 +5366,7 @@ MonoBehaviour:
   projectileSpeed: -6
   projectileOffset: {x: 0.2, y: -0.2}
   shootSound: {fileID: 8300000, guid: 56c904899bce3984fa2783ca6349ead2, type: 3}
+  levelManager: {fileID: 2011850069}
 --- !u!60 &2035156461
 PolygonCollider2D:
   m_ObjectHideFlags: 0
