@@ -2515,8 +2515,8 @@ MonoBehaviour:
   - {fileID: 11400000, guid: f5caf0363e4750b4abef20bd84b83d44, type: 2}
   - {fileID: 11400000, guid: 1f92525072a44064bbc5f9aacf6236be, type: 2}
   - {fileID: 11400000, guid: 87b54f592db33e149ba56e4952de55ba, type: 2}
-  - {fileID: 11400000, guid: 94c9fd18ce22ce9448783129586181c7, type: 2}
-  - {fileID: 11400000, guid: 94c9fd18ce22ce9448783129586181c7, type: 2}
+  - {fileID: 11400000, guid: e9d6694d5dc6c784584a02bf4ba6bd0c, type: 2}
+  - {fileID: 11400000, guid: d0ae8952175252b4ea6029a4ac459134, type: 2}
   - {fileID: 11400000, guid: 94c9fd18ce22ce9448783129586181c7, type: 2}
   allEniemiesDeadEvent:
     m_PersistentCalls:
@@ -5085,8 +5085,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 55b350c2451f6334cb93911c430c13ba, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  levelNumber: 9
-  startLevel: 0
+  levelNumber: 11
+  startLevel: 10
   startJump:
     m_PersistentCalls:
       m_Calls:
@@ -5349,7 +5349,7 @@ MonoBehaviour:
   projectileSpeed: -6
   projectileOffset: {x: -0.2, y: -0.2}
   shootSound: {fileID: 8300000, guid: 56c904899bce3984fa2783ca6349ead2, type: 3}
-  levelManager: {fileID: 0}
+  levelManager: {fileID: 2011850069}
 --- !u!114 &2035156460
 MonoBehaviour:
   m_ObjectHideFlags: 0
