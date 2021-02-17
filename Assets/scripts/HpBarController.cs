@@ -14,12 +14,12 @@ public class HpBarController : MonoBehaviour
 
     public void Damaged(int newHealth)
     {
-        if (newHealth < 0 || newHealth > sprites.Length)
+        if (newHealth > sprites.Length)
         {
             print("Incorrect newHealth value in HpBarController");
             throw new System.IndexOutOfRangeException();
         }
-        else if (newHealth != 0)
+        else if (newHealth > 0)
         {
             rendererComponent.sprite = sprites[newHealth - 1];
         }

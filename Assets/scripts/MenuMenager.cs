@@ -7,6 +7,7 @@ public class MenuMenager : MonoBehaviour
 {
     public GameObject menuCanvas;
     public GameObject loadingCnavas;
+    public GameObject creditsCnavas;
     public UnityEngine.UI.Slider loadingBar;
 
     public void OnPlayClicked()
@@ -28,7 +29,14 @@ public class MenuMenager : MonoBehaviour
 
     public void OnCreditsClicked()
     {
+        menuCanvas.SetActive(false);
+        creditsCnavas.SetActive(true);
+    }
 
+    public void OnBackClicked()
+    {
+        menuCanvas.SetActive(true);
+        creditsCnavas.SetActive(false);
     }
 
     public void OnExitClicked()
