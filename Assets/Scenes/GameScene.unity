@@ -2183,7 +2183,7 @@ MonoBehaviour:
   projectileSpeed: -6
   projectileOffset: {x: -0.2, y: -0.2}
   shootSound: {fileID: 8300000, guid: 56c904899bce3984fa2783ca6349ead2, type: 3}
-  levelManager: {fileID: 0}
+  levelManager: {fileID: 2011850069}
 --- !u!1 &519420028
 GameObject:
   m_ObjectHideFlags: 0
@@ -2610,7 +2610,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   yOffset: -10
-  widthOffset: 20
+  widthOffset: 40
 --- !u!114 &750464272
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5086,7 +5086,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   levelNumber: 11
-  startLevel: 10
+  startLevel: 0
   startJump:
     m_PersistentCalls:
       m_Calls:

@@ -7,7 +7,7 @@ public class BackgroundController : MonoBehaviour
     public List<Sprite> backgrounds;
 
     private SpriteRenderer spriteRenderer;
-    void Start()
+    void Awake()
     {
         spriteRenderer = GetComponent<SpriteRenderer>();
         spriteRenderer.sprite = backgrounds[0];

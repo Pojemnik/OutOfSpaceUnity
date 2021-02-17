@@ -14,8 +14,20 @@ public class LevelManager : MonoBehaviour
     public GameObject UICanvas;
 
     private int currentLevel;
-    void Start()
+    void Awake()
     {
+        string[] arguments = System.Environment.GetCommandLineArgs();
+        if(arguments.Length == 2)
+        {
+            try
+            {
+                startLevel = int.Parse(arguments[1]);
+            }
+            catch (System.FormatException e)
+            {
+                print(e);
+            }
+        }
         currentLevel = startLevel;
         UICanvas.SetActive(true);
         changeLevel.Invoke(currentLevel);
