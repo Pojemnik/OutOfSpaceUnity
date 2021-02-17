@@ -72,3 +72,5 @@ crashlytics-build.properties
 
 /Assets/TextMesh Pro/
 /bin/
+/Assets/misc/player_spritesheet.xcf
+/Assets/misc/player_spritesheet.xcf.meta

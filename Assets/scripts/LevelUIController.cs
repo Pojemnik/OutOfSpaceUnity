@@ -7,12 +7,14 @@ public class LevelUIController : MonoBehaviour
 {
     public IntEvent levelStart;
     public float displayTime;
+    public GameObject cursor;
 
     private TMPro.TextMeshProUGUI textMesh;
     private GameObject resumeButton;
     private GameObject menuButton;
     private GameObject restartButton;
     private int currentLevel;
+    private CursorController cursorController;
     private Vector2[] buttonsPositions =
     {
         new Vector2(0, 65),
@@ -26,10 +28,12 @@ public class LevelUIController : MonoBehaviour
         resumeButton = transform.Find("ResumeButton").gameObject;
         menuButton = transform.Find("MenuButton").gameObject;
         restartButton = transform.Find("RestartButton").gameObject;
+        cursorController = cursor.GetComponent<CursorController>();
     }
 
     public void OnLevelChange(int level)
     {
+        cursorController.OnPointerButtonExit(gameObject);
         PlaceButtons(-1, -1, -1);
         textMesh.text = string.Format("Level {0}", level + 1);
         currentLevel = level;
