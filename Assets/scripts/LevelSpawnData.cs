@@ -18,7 +18,8 @@ public enum AiType
     DiagonalLeft,
     DiagonalRight,
     Maneuver1,
-    Maneuver2
+    Maneuver2,
+    Boss
 }
 
 [System.Serializable]

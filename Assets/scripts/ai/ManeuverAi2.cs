@@ -5,17 +5,18 @@ using System;
 
 public class ManeuverAi2 : MonoBehaviour
 {
-    private float speed = 3;
-    private float stateTime = 0.0f;
-    private Vector2 lastPosition;
-    private float lastRotation;
-    private StateStruct nextState;
-    private readonly float[] stateDurations = { 0, 0.6f, 1.2f, 1.2f };
-    private Rigidbody2D rb2d;
-    private MoveMode lastMode;
-    private AutoShooter shooter;
+    protected float speed = 3;
+    protected float stateTime = 0.0f;
+    protected Vector2 lastPosition;
+    protected StateStruct nextState;
+    protected Rigidbody2D rb2d;
+    protected AutoShooter shooter;
 
-    private void Awake()
+    private float lastRotation;
+    private readonly float[] stateDurations = { 0, 0.6f, 1.2f, 1.2f };
+    private MoveMode lastMode;
+
+    protected virtual void Awake()
     {
         rb2d = GetComponent<Rigidbody2D>();
         shooter = GetComponent<AutoShooter>();
@@ -24,7 +25,7 @@ public class ManeuverAi2 : MonoBehaviour
         lastPosition = rb2d.position;
     }
 
-    private void Update()
+    protected virtual void Update()
     {
         stateTime += Time.deltaTime;
         if (stateTime >= nextState.duration)
@@ -38,7 +39,7 @@ public class ManeuverAi2 : MonoBehaviour
         rb2d.rotation = Mathf.LerpAngle(lastRotation, nextState.targetRotation, stateTime / nextState.duration);
     }
 
-    private StateStruct GenerateNextState()
+    protected virtual StateStruct GenerateNextState()
     {
         StateStruct newState = new StateStruct();
         MoveMode mode = MoveMode.Regular;
@@ -140,12 +141,12 @@ public class ManeuverAi2 : MonoBehaviour
         return newState;
     }
 
-    private Vector2 SectorToPosition(Vector2Int sector)
+    protected Vector2 SectorToPosition(Vector2Int sector)
     {
         return new Vector2(sector.x * 4.0f, sector.y * 3);
     }
 
-    private enum MoveMode
+    protected enum MoveMode
     {
         Regular = 0,
         Dash,

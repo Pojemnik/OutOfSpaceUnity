@@ -4,15 +4,35 @@ using UnityEngine;
 
 public class AutoShooter : MonoBehaviour
 {
-    public float shootCooldown;
+    public float startCooldown;
+    public float shootCooldown
+    {
+        set
+        {
+            if (cooldown > value)
+            {
+                shootTimer = -float.Epsilon;
+                cooldown = value;
+            }
+            else if(cooldown < value)
+            {
+                cooldown = value;
+                shootTimer = cooldown;
+            }
+        }
+        get { return cooldown; }
+    }
     public float cooldownVariation;
 
+    private float cooldown;
     private float shootTimer = 0.0f;
     private Shooter[] shooters;
-    void Start()
+
+    void Awake()
     {
+        cooldown = startCooldown;
         shooters = GetComponents<Shooter>();
-        shootTimer += Random.Range(0, shootCooldown);
+        shootTimer += Random.Range(0, cooldown);
     }
 
     void FixedUpdate()
@@ -23,7 +43,7 @@ public class AutoShooter : MonoBehaviour
         }
         else
         {
-            shootTimer += shootCooldown + Random.Range(-cooldownVariation, cooldownVariation);
+            shootTimer += cooldown + Random.Range(-cooldownVariation, cooldownVariation);
             foreach (Shooter shooter in shooters)
             {
                 shooter.Shoot();
