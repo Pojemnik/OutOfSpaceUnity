@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class Projectile : MonoBehaviour
 {
-    public float bound;
+    public Vector2 bound;
     public int damage;
 
     private Rigidbody2D rb2d;
@@ -16,7 +16,7 @@ public class Projectile : MonoBehaviour
 
     void Update()
     {
-        if(rb2d.position.y >= bound || rb2d.position.y <= -bound)
+        if(rb2d.position.y >= bound.y || rb2d.position.y <= -bound.y || rb2d.position.x >= bound.x || rb2d.position.x <= -bound.x)
         {
             Destroy(gameObject);
         }

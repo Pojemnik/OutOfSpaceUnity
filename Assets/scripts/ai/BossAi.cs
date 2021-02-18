@@ -6,11 +6,13 @@ public class BossAi : ManeuverAi2
 {
     public BossAttack startAttack;
     public GameObject spawnPrefab;
+    public GameObject portalPrefab;
 
     private BossAttack currentAttack;
     private float attackTime;
-    private float maneuverDuration = 2;
+    private float maneuverDuration = 4;
     private int attackIterator = 0;
+    private const float defaultDuration = 2;
 
     private readonly StateStruct[] swipeAttack =
     {
@@ -29,7 +31,7 @@ public class BossAi : ManeuverAi2
     private readonly StateStruct defaultState = new StateStruct
     {
         finalPosition = new Vector2(0, 4),
-        duration = 2
+        duration = defaultDuration
     };
 
     protected override void Awake()
@@ -73,14 +75,40 @@ public class BossAi : ManeuverAi2
                     }
                     break;
                 case BossAttack.Spawn:
-                    GameObject spawn = Instantiate(spawnPrefab, new Vector2(-4, 4), Quaternion.identity);
-                    spawn.GetComponent<BossSpawnController>().enemyAiType = AiType.SnakeLeft;
-                    spawn.SetActive(true);
-                    spawn = Instantiate(spawnPrefab, new Vector2(4, 4), Quaternion.identity);
-                    spawn.GetComponent<BossSpawnController>().enemyAiType = AiType.SnakeRight;
-                    spawn.SetActive(true);
-                    currentAttack = GenerateNextAttack();
-                    InitializeNextAttack();
+                    if (attackIterator < 1)
+                    {
+                        attackIterator++;
+                        nextState = defaultState;
+                    }
+                    else
+                    {
+                        GameObject spawn = Instantiate(spawnPrefab, new Vector2(-4, 4), Quaternion.identity);
+                        spawn.GetComponent<BossSpawnController>().enemyAiType = AiType.SnakeLeft;
+                        spawn.SetActive(true);
+                        spawn = Instantiate(spawnPrefab, new Vector2(4, 4), Quaternion.identity);
+                        spawn.GetComponent<BossSpawnController>().enemyAiType = AiType.SnakeRight;
+                        spawn.SetActive(true);
+                        currentAttack = GenerateNextAttack();
+                        InitializeNextAttack();
+                    }
+                    break;
+                case BossAttack.Portal:
+                    if (attackIterator < 1)
+                    {
+                        attackIterator++;
+                        nextState = defaultState;
+                    }
+                    else
+                    {
+                        GameObject portal = Instantiate(portalPrefab, new Vector2(-6, 4), Quaternion.Euler(0, 0, 90));
+                        portal.GetComponent<BossPortalController>().projectileSpeed = 5;
+                        portal.SetActive(true);
+                        portal = Instantiate(portalPrefab, new Vector2(6, 4), Quaternion.Euler(0, 0, 270));
+                        portal.GetComponent<BossPortalController>().projectileSpeed = -5;
+                        portal.SetActive(true);
+                        currentAttack = GenerateNextAttack();
+                        InitializeNextAttack();
+                    }
                     break;
             }
         }
@@ -133,7 +161,7 @@ public class BossAi : ManeuverAi2
     private BossAttack GenerateNextAttack()
     {
         stateTime = 0;
-        int attackNumber = Random.Range(0, 2);
+        int attackNumber = Random.Range(0, 3);
         if (attackNumber >= (int)currentAttack)
         {
             attackNumber++;
@@ -155,13 +183,19 @@ public class BossAi : ManeuverAi2
                 break;
             case BossAttack.Swipe:
                 nextState = swipeAttack[0];
-                nextState.duration = Vector2.Distance(lastPosition, nextState.finalPosition) / speed;
+                nextState.duration = CalculateDuration(lastPosition, nextState.finalPosition);
                 attackIterator = 0;
                 shooter.shootCooldown = 0.9f;
                 break;
             case BossAttack.Spawn:
                 nextState = defaultState;
-                nextState.duration = Vector2.Distance(lastPosition, nextState.finalPosition) / speed;
+                nextState.duration = CalculateDuration(lastPosition, nextState.finalPosition);
+                attackIterator = 0;
+                shooter.shootCooldown = 0.9f;
+                break;
+            case BossAttack.Portal:
+                nextState = defaultState;
+                nextState.duration = CalculateDuration(lastPosition, nextState.finalPosition);
                 attackIterator = 0;
                 shooter.shootCooldown = 0.9f;
                 break;
@@ -171,12 +205,21 @@ public class BossAi : ManeuverAi2
         }
     }
 
+    private float CalculateDuration(Vector2 a, Vector2 b)
+    {
+        float dist = Vector2.Distance(a, b);
+        if(dist != 0)
+        {
+            return dist / speed;
+        }
+        return defaultDuration;
+    }
+
     public enum BossAttack
     {
         Maneuver,
         Swipe,
         Spawn,
-        Portal,
-        Bomb
+        Portal
     }
 }

@@ -7,6 +7,7 @@ public class SnakeAi : MonoBehaviour
 {
     public float speed;
     public List<DirectionBound> moveSquence;
+    public float downBound;
 
     private Rigidbody2D rb2d;
     private DirectionBound currentSequenceElement;
@@ -78,6 +79,16 @@ public class SnakeAi : MonoBehaviour
         if (onBounds)
         {
             sequenceIterator++;
+        }
+        if (position.y <= downBound)
+        {
+            while (moveSquence[sequenceIterator % moveSquence.Count].direction.y < 0)
+            {
+                sequenceIterator++;
+            }
+        }
+        if (onBounds)
+        {
             currentSequenceElement = moveSquence[sequenceIterator % moveSquence.Count];
             currentElementStartPos = rb2d.position;
             return;

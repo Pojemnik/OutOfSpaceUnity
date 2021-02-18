@@ -11,6 +11,7 @@ public class SpawnerController : MonoBehaviour
     public List<GameObject> enemiesPrefabs;
     public Vector2 maxBounds;
     public GameObject bossSpawnPrefab;
+    public GameObject bossPortalPrefab;
 
     private int enemiesAlive = 0;
 
@@ -31,6 +32,7 @@ public class SpawnerController : MonoBehaviour
                 {
                     SnakeAi ai = enemy.AddComponent<SnakeAi>();
                     ai.speed = 1.5f;
+                    ai.downBound = -1;
                     ai.moveSquence = new List<SnakeAi.DirectionBound>
                     {
                 new SnakeAi.DirectionBound(new Vector2Int(1,0), maxBounds, true),
@@ -44,6 +46,7 @@ public class SpawnerController : MonoBehaviour
                 {
                     SnakeAi ai = enemy.AddComponent<SnakeAi>();
                     ai.speed = 1.5f;
+                    ai.downBound = -1;
                     ai.moveSquence = new List<SnakeAi.DirectionBound>
                     {
                 new SnakeAi.DirectionBound(new Vector2Int(-1,0), maxBounds, true),
@@ -105,6 +108,7 @@ public class SpawnerController : MonoBehaviour
                     BossAi ai = enemy.AddComponent<BossAi>();
                     ai.startAttack = BossAi.BossAttack.Maneuver;
                     ai.spawnPrefab = bossSpawnPrefab;
+                    ai.portalPrefab = bossPortalPrefab;
                 }
                 break;
             default:
