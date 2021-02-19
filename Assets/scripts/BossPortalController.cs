@@ -16,6 +16,11 @@ public class BossPortalController : MonoBehaviour
 
     void Awake()
     {
+        if(target == null)
+        {
+            Destroy(gameObject);
+            return;
+        }
         rb2d = GetComponent<Rigidbody2D>();
         targetTransform = target.transform;
         levelManager = levelManegerObject.GetComponent<LevelManager>();
@@ -23,7 +28,12 @@ public class BossPortalController : MonoBehaviour
 
     private void FixedUpdate()
     {
-        if(transform.position.y <= targetTransform.position.y)
+        if (target == null)
+        {
+            Destroy(gameObject);
+            return;
+        }
+        if (transform.position.y <= targetTransform.position.y)
         {
             GameObject newProjectile = Instantiate(projectilePrefab, transform.position, transform.rotation);
             newProjectile.SetActive(true);
