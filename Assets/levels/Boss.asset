@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Boss
   m_EditorClassIdentifier: 
   enemies:
-  - position: {x: 0, y: 0}
+  - position: {x: 0, y: 3}
     prefabID: 5
     health: 19
     aiType: 10

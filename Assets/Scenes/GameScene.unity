@@ -561,7 +561,7 @@ Transform:
   m_LocalScale: {x: 1.5, y: 1.5, z: 0}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 22
+  m_RootOrder: 23
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!60 &68819097
 PolygonCollider2D:
@@ -1309,7 +1309,7 @@ Transform:
   m_LocalScale: {x: 1.5, y: 1.5, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 20
+  m_RootOrder: 21
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &210830108
 GameObject:
@@ -1688,7 +1688,7 @@ Transform:
   m_LocalScale: {x: 1.5, y: 1.5, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 18
+  m_RootOrder: 19
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &330730437
 MonoBehaviour:
@@ -1950,8 +1950,19 @@ MonoBehaviour:
   type: 0
   deathEvent:
     m_PersistentCalls:
-      m_Calls: []
-  explosion: {fileID: 906982335}
+      m_Calls:
+      - m_Target: {fileID: 930353159}
+        m_MethodName: OnBossDeath
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+  explosion: {fileID: 930353158}
   explosionOffset: {x: 0, y: 0}
   hpBarOffset: {x: 0, y: 0.2}
 --- !u!114 &464057478
@@ -2146,7 +2157,7 @@ Transform:
   m_LocalScale: {x: 1.5, y: 1.5, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 27
+  m_RootOrder: 28
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &478024986
 GameObject:
@@ -2451,7 +2462,7 @@ Transform:
   m_LocalScale: {x: 1.5, y: 1.5, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 24
+  m_RootOrder: 25
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &511312742
 GameObject:
@@ -2757,7 +2768,7 @@ Transform:
   m_LocalScale: {x: 1.5, y: 1.5, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 25
+  m_RootOrder: 26
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &511312752
 MonoBehaviour:
@@ -3503,7 +3514,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 17
+  m_RootOrder: 18
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!82 &906982340
 AudioSource:
@@ -3734,6 +3745,75 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 909157410}
   m_CullTransparentMesh: 0
+--- !u!1 &930353158
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 930353160}
+  - component: {fileID: 930353159}
+  m_Layer: 0
+  m_Name: BossExplosion
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 0
+--- !u!114 &930353159
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 930353158}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a5af0b5f472331d429618ac4156b6caa, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  singleExplosion: {fileID: 906982335}
+  explosionSequence:
+  - position: {x: -0.5, y: 0.3}
+    startTime: 0
+  - position: {x: 0.4, y: 0.1}
+    startTime: 0
+  - position: {x: -0.1, y: 0.7}
+    startTime: 0.5
+  - position: {x: -0.6, y: -0.3}
+    startTime: 0.6
+  - position: {x: 0.2, y: -0.5}
+    startTime: 0.9
+  - position: {x: 0.5, y: -0.5}
+    startTime: 0.2
+  - position: {x: 0.2, y: -0.2}
+    startTime: 0.3
+  - position: {x: -0.3, y: -0.5}
+    startTime: 0.4
+  - position: {x: 0.2, y: 0.1}
+    startTime: 0.5
+  - position: {x: -0.6, y: -0.2}
+    startTime: 0.6
+  - position: {x: -0.6, y: 0.8}
+    startTime: 0.3
+  - position: {x: 0.5, y: -0.7}
+    startTime: 0.5
+--- !u!4 &930353160
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 930353158}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -0.50932115, y: -0.071137704, z: -524.15234}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 17
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &946836108
 GameObject:
   m_ObjectHideFlags: 0
@@ -4371,7 +4451,7 @@ RectTransform:
   - {fileID: 1843589769}
   - {fileID: 1428442667}
   m_Father: {fileID: 0}
-  m_RootOrder: 21
+  m_RootOrder: 22
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
@@ -4919,7 +4999,7 @@ Transform:
   m_LocalScale: {x: 1.5, y: 1.5, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 19
+  m_RootOrder: 20
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1715667502
 GameObject:
@@ -5732,7 +5812,7 @@ Transform:
   m_LocalScale: {x: 1.5, y: 1.5, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 23
+  m_RootOrder: 24
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1887901777
 GameObject:
@@ -5899,7 +5979,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   levelNumber: 12
-  startLevel: 11
+  startLevel: 0
   startJump:
     m_PersistentCalls:
       m_Calls:
@@ -5977,6 +6057,7 @@ MonoBehaviour:
         m_CallState: 2
   player: {fileID: 67998832}
   UICanvas: {fileID: 1415239251}
+  bossExpolosion: {fileID: 0}
 --- !u!4 &2011850070
 Transform:
   m_ObjectHideFlags: 0
@@ -6311,5 +6392,5 @@ Transform:
   m_LocalScale: {x: 1.5, y: 1.5, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 26
+  m_RootOrder: 27
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}

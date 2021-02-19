@@ -100,12 +100,12 @@ public class BossAi : ManeuverAi2
                     }
                     else
                     {
-                        GameObject portal1 = Instantiate(portalPrefab, new Vector2(-6.5f, 4), Quaternion.Euler(0, 0, 90));
-                        portal1.GetComponent<BossPortalController>().projectileSpeed = 5;
-                        portal1.SetActive(true);
-                        GameObject portal2 = Instantiate(portalPrefab, new Vector2(6.5f, 4), Quaternion.Euler(0, 0, 270));
-                        portal2.GetComponent<BossPortalController>().projectileSpeed = -5;
-                        portal2.SetActive(true);
+                        GameObject portal = Instantiate(portalPrefab, new Vector2(-6.5f, 4), Quaternion.Euler(0, 0, 90));
+                        portal.GetComponent<BossPortalController>().projectileSpeed = 5;
+                        portal.SetActive(true);
+                        portal = Instantiate(portalPrefab, new Vector2(6.5f, 4), Quaternion.Euler(0, 0, 270));
+                        portal.GetComponent<BossPortalController>().projectileSpeed = -5;
+                        portal.SetActive(true);
                         currentAttack = GenerateNextAttack();
                         InitializeNextAttack();
                     }
