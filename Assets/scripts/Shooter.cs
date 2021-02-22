@@ -24,7 +24,7 @@ public class Shooter : MonoBehaviour
         newProjectile.SetActive(true);
         Rigidbody2D projectileRB = newProjectile.GetComponent<Rigidbody2D>();
         projectileRB.velocity = new Vector2(0, projectileSpeed);
-        audioSource.PlayOneShot(shootSound);
+        audioSource.PlayOneShot(shootSound, 0.1f);
         levelManager.changeLevel.AddListener(newProjectile.GetComponent<Projectile>().TargetHit);
     }
 }

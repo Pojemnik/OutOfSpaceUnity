@@ -43,6 +43,7 @@ public class LevelManager : MonoBehaviour
         }
         else
         {
+            player.SetActive(false);
             UICanvas.SetActive(true);
             victory.Invoke();
         }

@@ -8,6 +8,7 @@ Music by remaxim, yd, Joth, maxstack opengameart.org
 Explosion sound effect by Lamoot from Blender Foundation opengameart.org
 Laser sounds by dklon and bart opengameart.org
 Jump sound by Ogrebane opengameart.org
+Player hit sound by NenadSimic opengameart.org
 Original version & rest of graphics: Tobiasz "IlaMoCLitTMW" Szulc, Andrzej "Pojemnik" Gauza
 Code of Unity version: Andrzej "Pojemnik" Gauza
 Testing: Adam "Gahlammon" Dachtera

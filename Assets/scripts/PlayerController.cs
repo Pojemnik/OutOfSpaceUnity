@@ -9,17 +9,28 @@ public class PlayerController : MonoBehaviour
     public float shootCooldown;
     public GameObject jumpPortalPrefab;
     public Vector2 portalOffset;
+    public AudioClip damageClip;
+    public UnityEngine.Audio.AudioMixerGroup playerHitGroup;
 
     private Rigidbody2D rb2d;
     private Shooter shooter;
     private Health health;
     private float shootTimer = 0.0f;
+    private AudioSource hitAudioSource;
 
     void Awake()
     {
         rb2d = GetComponent<Rigidbody2D>();
         shooter = GetComponent<Shooter>();
         health = GetComponent<Health>();
+        var sources = GetComponents<AudioSource>();
+        foreach(AudioSource source in sources)
+        {
+            if(source.outputAudioMixerGroup == playerHitGroup)
+            {
+                hitAudioSource = source;
+            }
+        }
     }
 
     void Update()
@@ -56,6 +67,14 @@ public class PlayerController : MonoBehaviour
         if(collision.gameObject.CompareTag("Enemy"))
         {
             health.Hit(1);
+        }
+    }
+
+    public void Damaged(int currentHealth)
+    {
+        if(currentHealth != 0)
+        {
+            hitAudioSource.PlayOneShot(damageClip, 1);
         }
     }
 
