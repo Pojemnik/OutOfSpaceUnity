@@ -37,19 +37,27 @@ MonoBehaviour:
     prefabID: 2
     health: 4
     aiType: 3
-  - position: {x: -3.5, y: 1}
+  - position: {x: -4, y: 1}
     prefabID: 2
     health: 4
-    aiType: 3
-  - position: {x: -4.5, y: 1}
+    aiType: 6
+  - position: {x: -5, y: 1}
     prefabID: 2
     health: 4
-    aiType: 3
-  - position: {x: 3.5, y: 1}
+    aiType: 6
+  - position: {x: 4, y: 1}
     prefabID: 2
     health: 4
-    aiType: 3
-  - position: {x: 4.5, y: 1}
+    aiType: 7
+  - position: {x: 5, y: 1}
     prefabID: 2
     health: 4
-    aiType: 3
+    aiType: 7
+  - position: {x: 6, y: 1}
+    prefabID: 2
+    health: 4
+    aiType: 7
+  - position: {x: -6, y: 1}
+    prefabID: 2
+    health: 4
+    aiType: 6

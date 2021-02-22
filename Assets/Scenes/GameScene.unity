@@ -255,13 +255,10 @@ PolygonCollider2D:
   m_AutoTiling: 0
   m_Points:
     m_Paths:
-    - - {x: -0.035, y: 0.26}
-      - {x: -0.065, y: 0.21}
-      - {x: -0.205, y: -0.089999996}
-      - {x: -0.205, y: -0.22999999}
-      - {x: 0.205, y: -0.22999999}
-      - {x: 0.205, y: -0.099999994}
-      - {x: 0.035, y: 0.26}
+    - - {x: 0.02, y: 0.2}
+      - {x: -0.02, y: 0.2}
+      - {x: -0.2, y: -0.2}
+      - {x: 0.2, y: -0.2}
 --- !u!50 &67998837
 Rigidbody2D:
   serializedVersion: 4
@@ -313,7 +310,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   projectilePrefab: {fileID: 634176462}
-  projectileSpeed: 6
+  projectileSpeed: 6.5
   projectileOffset: {x: 0, y: 0}
   shootSound: {fileID: 8300000, guid: 980aa320e2649c647b7aaa813ff97970, type: 3}
   levelManager: {fileID: 2011850069}
@@ -663,6 +660,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   startCooldown: 0.8
+  alternativeMode: 0
   cooldownVariation: 0.05
 --- !u!82 &68819102
 AudioSource:
@@ -1978,6 +1976,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   startCooldown: 0.9
+  alternativeMode: 0
   cooldownVariation: 0
 --- !u!114 &464057479
 MonoBehaviour:
@@ -2312,6 +2311,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   startCooldown: 0.8
+  alternativeMode: 0
   cooldownVariation: 0.1
 --- !u!114 &478024990
 MonoBehaviour:
@@ -2618,6 +2618,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   startCooldown: 0.9
+  alternativeMode: 0
   cooldownVariation: 0
 --- !u!114 &511312746
 MonoBehaviour:
@@ -5662,6 +5663,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   startCooldown: 0.7
+  alternativeMode: 0
   cooldownVariation: 0.05
 --- !u!114 &1860467798
 MonoBehaviour:
@@ -5676,7 +5678,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   projectilePrefab: {fileID: 81813629}
-  projectileSpeed: -8
+  projectileSpeed: -7.5
   projectileOffset: {x: 0, y: 0}
   shootSound: {fileID: 8300000, guid: 75b238ff9c3ef324490ddc8f65428ede, type: 3}
   levelManager: {fileID: 2011850069}
@@ -5979,7 +5981,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   levelNumber: 12
-  startLevel: 0
+  startLevel: 9
   startJump:
     m_PersistentCalls:
       m_Calls:
@@ -6226,6 +6228,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   startCooldown: 0.9
+  alternativeMode: 0
   cooldownVariation: 0
 --- !u!114 &2035156459
 MonoBehaviour:

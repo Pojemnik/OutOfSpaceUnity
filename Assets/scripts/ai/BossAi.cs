@@ -67,6 +67,7 @@ public class BossAi : ManeuverAi2
                         attackIterator++;
                         nextState = swipeAttack[attackIterator];
                         shooter.shootCooldown = 0.1f;
+                        shooter.alternativeMode = true;
                     }
                     else
                     {
@@ -174,6 +175,7 @@ public class BossAi : ManeuverAi2
     private void InitializeNextAttack()
     {
         lastPosition = rb2d.position;
+        shooter.alternativeMode = false;
         switch (currentAttack)
         {
             case BossAttack.Maneuver:

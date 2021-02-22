@@ -42,7 +42,7 @@ public class Health : MonoBehaviour
         }
     }
 
-    private void Die()
+    public void Die()
     {
         deathEvent.Invoke();
         Vector2 explosionPosition = (Vector2)transform.position + explosionOffset;

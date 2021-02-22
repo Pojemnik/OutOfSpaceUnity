@@ -14,18 +14,41 @@ public class SpawnerController : MonoBehaviour
     public GameObject bossPortalPrefab;
 
     private int enemiesAlive = 0;
+    private List<Health> bossSpawnedEnemiesHealths;
+    private int currentLevel;
+
+    private void Awake()
+    {
+        bossSpawnedEnemiesHealths = new List<Health>();    
+    }
 
     public void OnLevelStart(int levelNumber)
     {
+        currentLevel = levelNumber;
         foreach (EnemySpawnData enemyData in levels[levelNumber].enemies)
         {
             SpawnEnemy(enemyData);
         }
     }
 
-    public void SpawnEnemy(EnemySpawnData enemyData)
+    private Health SpawnEnemyLocal(EnemySpawnData enemyData)
     {
         GameObject enemy = Instantiate(enemiesPrefabs[enemyData.prefabID], new Vector3(enemyData.position.x, enemyData.position.y, 0), new Quaternion());
+        Health enemyHealth = enemy.GetComponent<Health>();
+        enemyHealth.deathEvent.AddListener(OnEnemyDeath);
+        enemyHealth.startHealth = enemyData.health;
+        GameObject hpBar;
+        if (enemyData.health <= 5)
+        {
+            hpBar = Instantiate(hpBarsPrefabs[enemyData.health - 2]);
+        }
+        else
+        {
+            hpBar = Instantiate(hpBarsPrefabs[4]);
+        }
+        hpBar.transform.parent = enemy.transform;
+        hpBar.transform.localPosition = new Vector2(0, 0.3f) + enemyHealth.hpBarOffset;
+        hpBar.SetActive(true);
         switch (enemyData.aiType)
         {
             case AiType.SnakeRight:
@@ -109,28 +132,35 @@ public class SpawnerController : MonoBehaviour
                     ai.startAttack = BossAi.BossAttack.Maneuver;
                     ai.spawnPrefab = bossSpawnPrefab;
                     ai.portalPrefab = bossPortalPrefab;
+                    enemyHealth.deathEvent.AddListener(OnBossDeath);
                 }
                 break;
             default:
                 break;
         }
         enemy.SetActive(true);
-        Health enemyHealth = enemy.GetComponent<Health>();
-        enemyHealth.deathEvent.AddListener(OnEnemyDeath);
-        enemyHealth.startHealth = enemyData.health;
-        GameObject hpBar;
-        if (enemyData.health <= 5)
-        {
-            hpBar = Instantiate(hpBarsPrefabs[enemyData.health - 2]);
-        }
-        else
-        {
-            hpBar = Instantiate(hpBarsPrefabs[4]);
-        }
-        hpBar.transform.parent = enemy.transform;
-        hpBar.transform.localPosition = new Vector2(0, 0.3f) + enemyHealth.hpBarOffset;
-        hpBar.SetActive(true);
         enemiesAlive++;
+        return enemyHealth;
+    }
+
+    public void SpawnEnemy(EnemySpawnData enemyData)
+    {
+        Health enemyHealth = SpawnEnemyLocal(enemyData);
+        if (currentLevel == levels.Count - 1 && enemyData.prefabID != 5)
+        {
+            bossSpawnedEnemiesHealths.Add(enemyHealth);
+        }
+    }
+
+    public void OnBossDeath()
+    {
+        foreach(Health enemyHealth in bossSpawnedEnemiesHealths)
+        {
+            if(enemyHealth != null)
+            {
+                enemyHealth.Die();
+            }
+        }
     }
 
     public void OnEnemyDeath()

@@ -13,51 +13,51 @@ MonoBehaviour:
   m_Name: Level8
   m_EditorClassIdentifier: 
   enemies:
-  - position: {x: 1, y: 3}
+  - position: {x: 2.5, y: 3}
     prefabID: 2
     health: 4
     aiType: 7
-  - position: {x: -1, y: 3}
+  - position: {x: -2.5, y: 3}
     prefabID: 2
     health: 4
     aiType: 6
-  - position: {x: 1, y: 0}
+  - position: {x: 1, y: 1}
     prefabID: 2
     health: 4
     aiType: 6
-  - position: {x: -1, y: 0}
+  - position: {x: -1, y: 1}
     prefabID: 2
     health: 4
     aiType: 7
-  - position: {x: 2, y: 3}
+  - position: {x: 3.5, y: 3}
     prefabID: 2
     health: 4
     aiType: 7
-  - position: {x: -2, y: 3}
+  - position: {x: -3.5, y: 3}
     prefabID: 2
     health: 4
     aiType: 6
-  - position: {x: -2, y: 0}
+  - position: {x: -2, y: 1}
     prefabID: 2
     health: 4
     aiType: 7
-  - position: {x: 2, y: 0}
+  - position: {x: 2, y: 1}
     prefabID: 2
     health: 4
     aiType: 6
-  - position: {x: 4, y: 1}
+  - position: {x: 5.5, y: 1}
     prefabID: 1
     health: 3
     aiType: 2
-  - position: {x: -4, y: 1}
+  - position: {x: -5.5, y: 1}
     prefabID: 1
     health: 3
     aiType: 2
-  - position: {x: -5, y: 2}
+  - position: {x: -6.3, y: 2}
     prefabID: 1
     health: 3
     aiType: 2
-  - position: {x: 5, y: 2}
+  - position: {x: 6.3, y: 2}
     prefabID: 1
     health: 3
     aiType: 2
