@@ -5,6 +5,7 @@ public class PauseManager : MonoBehaviour
 {
     public BoolEvent pauseStateChanged;
     public GameObject UICanvas;
+    public GameObject settingsCanvas;
 
     private bool pausedByUser = false;
     private bool systemPause = false;
@@ -12,6 +13,7 @@ public class PauseManager : MonoBehaviour
     private float pauseCooldown = 0.5f;
     private float time = 0;
     private bool canPause = true;
+    private bool settingsEnabled = false;
 
     private void Awake()
     {
@@ -62,6 +64,21 @@ public class PauseManager : MonoBehaviour
         canPause = false;
     }
 
+    public void OnSettingsButtonPressed()
+    {
+        UICanvas.SetActive(false);
+        settingsCanvas.SetActive(true);
+        settingsEnabled = true;
+    }
+
+    public void OnBackButtonPressed()
+    {
+        settingsCanvas.SetActive(false);
+        UICanvas.SetActive(true);
+        settingsEnabled = false;
+        PlayerPrefs.Save();
+    }
+
     private void Update()
     {
         if (time > 0)
@@ -75,19 +92,30 @@ public class PauseManager : MonoBehaviour
                 time = pauseCooldown;
                 pausedByUser = !pausedByUser;
             }
-            if (pausedByUser || systemPause || lostFocus)
+            bool pause = pausedByUser || systemPause || lostFocus;
+            if (pause && !settingsEnabled)
             {
-                Time.timeScale = 0;
-                UICanvas.SetActive(true);
-                pauseStateChanged.Invoke(true);
+                Pause();
             }
-            else if (Time.timeScale == 0)
+            if (!pause && Time.timeScale == 0 && !settingsEnabled)
             {
-                Time.timeScale = 1;
-                UICanvas.SetActive(true);
-                pauseStateChanged.Invoke(false);
+                Unpause();
             }
         }
+    }
+
+    private void Pause()
+    {
+        Time.timeScale = 0;
+        UICanvas.SetActive(true);
+        pauseStateChanged.Invoke(true);
+    }
+
+    private void Unpause()
+    {
+        Time.timeScale = 1;
+        UICanvas.SetActive(true);
+        pauseStateChanged.Invoke(false);
     }
 }
 

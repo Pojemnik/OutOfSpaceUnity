@@ -12,7 +12,6 @@ public class LevelManager : MonoBehaviour
     public IntEvent changeLevel;
     public GameObject player;
     public GameObject UICanvas;
-    public GameObject bossExpolosion;
 
     private int currentLevel;
     void Awake()
