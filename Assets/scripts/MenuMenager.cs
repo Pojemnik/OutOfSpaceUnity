@@ -11,6 +11,7 @@ public class MenuMenager : MonoBehaviour
     public GameObject creditsCnavas;
     public GameObject settingsCanvas;
     public GameObject controlsCanvas;
+    public GameObject levelSelector;
     public float controlsDisplayTime;
     public AudioMixer mixer;
     public UnityEngine.UI.Slider loadingBar;
@@ -19,14 +20,21 @@ public class MenuMenager : MonoBehaviour
 
     private void Start()
     {
-        foreach(string name in prefsNames)
+        foreach (string name in prefsNames)
         {
             if (PlayerPrefs.HasKey(name))
             {
                 float value = PlayerPrefs.GetFloat(name);
-                print(value);
                 mixer.SetFloat(name, value);
             }
+        }
+    }
+
+    private void Update()
+    {
+        if (Input.GetKeyDown(KeyCode.L))
+        {
+            levelSelector.SetActive(true);
         }
     }
 
@@ -36,19 +44,21 @@ public class MenuMenager : MonoBehaviour
         settingsCanvas.SetActive(false);
         loadingCnavas.SetActive(false);
         controlsCanvas.SetActive(true);
+        TMPro.TMP_InputField levelSelectorInput = levelSelector.GetComponent<TMPro.TMP_InputField>();
+        int startLevel;
+        if (int.TryParse(levelSelectorInput.text, out startLevel) && startLevel > 0 && startLevel <= 12)
+        {
+            PlayerPrefs.SetInt("StartLevel", startLevel - 1);
+            PlayerPrefs.Save();
+        }
         StartCoroutine(ControlsCoroutine());
     }
 
     IEnumerator ControlsCoroutine()
     {
-        yield return new WaitForSeconds(controlsDisplayTime);
+        yield return new WaitForSecondsRealtime(controlsDisplayTime);
         loadingCnavas.SetActive(true);
         controlsCanvas.SetActive(false);
-        StartCoroutine(LoadGameScene());
-    }
-
-    IEnumerator LoadGameScene()
-    {
         AsyncOperation loadingOperation = SceneManager.LoadSceneAsync("GameScene");
         while (!loadingOperation.isDone)
         {

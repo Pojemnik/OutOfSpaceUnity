@@ -168,7 +168,6 @@ public class BossAi : ManeuverAi2
             attackNumber++;
         }
         BossAttack attack = (BossAttack)attackNumber;
-        //print(attack);
         return attack;
     }
 

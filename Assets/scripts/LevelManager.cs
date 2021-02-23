@@ -16,17 +16,11 @@ public class LevelManager : MonoBehaviour
     private int currentLevel;
     void Awake()
     {
-        string[] arguments = System.Environment.GetCommandLineArgs();
-        if(arguments.Length == 2)
+        if (PlayerPrefs.HasKey("StartLevel"))
         {
-            try
-            {
-                startLevel = int.Parse(arguments[1]);
-            }
-            catch (System.FormatException e)
-            {
-                print(e);
-            }
+            startLevel = PlayerPrefs.GetInt("StartLevel");
+            PlayerPrefs.DeleteKey("StartLevel");
+            PlayerPrefs.Save();
         }
         currentLevel = startLevel;
         UICanvas.SetActive(true);
