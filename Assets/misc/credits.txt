@@ -1,14 +1,13 @@
-Menu & credits background by StumpyStrust opengameart.org
+Menu & credits background by StumpyStrust
 Ships and cursor design by Stephen Challener (Redshrike), hosted by OpenGameArt.org
-Ship engines light and lasers by Rawdanitsu opengameart.org
-Level backgrounds by Rawdanitsu opengameart.org
-Explosions animations by Jetrel opengameart.org
-Jump and portals animation by Soluna Software opengameart.org
-Music by remaxim, yd, Joth, maxstack opengameart.org
-Explosion sound effect by Lamoot from Blender Foundation opengameart.org
-Laser sounds by dklon and bart opengameart.org
-Jump sound by Ogrebane opengameart.org
-Player hit sound by NenadSimic opengameart.org
+Ship engines light, lasers and levels' backgrounds by Rawdanitsu opengameart.org
+Explosions animations by Jetrel
+Jump and portals animation by Soluna Software
+Music by yd and Joth
+Explosion sound effect by Lamoot from Blender Foundation CC-BY 3.0
+Laser sounds by dklon and bart
+Other sounds by Ogrebane and NenadSimic
+Keyboard buttons graphics by Rallix
 Original version & rest of graphics: Tobiasz "IlaMoCLitTMW" Szulc, Andrzej "Pojemnik" Gauza
 Code of Unity version: Andrzej "Pojemnik" Gauza
 Testing: Adam "Gahlammon" Dachtera

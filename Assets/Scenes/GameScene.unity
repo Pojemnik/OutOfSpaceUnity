@@ -7362,8 +7362,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   music:
   - {fileID: 8300000, guid: a6275f660b449f94ab28d420ec1d597d, type: 3}
-  - {fileID: 8300000, guid: e3a9d47987301804aa7e362b2525d101, type: 3}
-  - {fileID: 8300000, guid: 8826768ec5658444182139ce9243bd2c, type: 3}
+  - {fileID: 8300000, guid: bb723651b66ec99439a7188e8324bdf9, type: 3}
+  - {fileID: 8300000, guid: 797a2c51d4fd1ed49a13414291850978, type: 3}
 --- !u!1 &1485710481
 GameObject:
   m_ObjectHideFlags: 0
@@ -9122,7 +9122,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   levelNumber: 12
-  startLevel: 8
+  startLevel: 0
   startJump:
     m_PersistentCalls:
       m_Calls:

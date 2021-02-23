@@ -10,6 +10,8 @@ public class MenuMenager : MonoBehaviour
     public GameObject loadingCnavas;
     public GameObject creditsCnavas;
     public GameObject settingsCanvas;
+    public GameObject controlsCanvas;
+    public float controlsDisplayTime;
     public AudioMixer mixer;
     public UnityEngine.UI.Slider loadingBar;
 
@@ -32,7 +34,16 @@ public class MenuMenager : MonoBehaviour
     {
         menuCanvas.SetActive(false);
         settingsCanvas.SetActive(false);
+        loadingCnavas.SetActive(false);
+        controlsCanvas.SetActive(true);
+        StartCoroutine(ControlsCoroutine());
+    }
+
+    IEnumerator ControlsCoroutine()
+    {
+        yield return new WaitForSeconds(controlsDisplayTime);
         loadingCnavas.SetActive(true);
+        controlsCanvas.SetActive(false);
         StartCoroutine(LoadGameScene());
     }
 
