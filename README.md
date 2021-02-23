@@ -4,7 +4,9 @@ The goal of this project is to learn Unity by remaking an old game made by me an
 
 The game won't be exactly the same as the old version. I will try to improve it a bit and add more levels, enemies and other stuff.
 
-Read Assets/misc/credits.txt for credits
+Credits available in game or in Assets/misc/credits.txt.
+
+Browser version of the game will be available soon.
 
 ### Link to the original project:
 https://github.com/IIaMoCLitTMW/OUT-OF-SPACE
