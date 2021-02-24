@@ -25,18 +25,21 @@ public class Projectile : MonoBehaviour
         }
     }
 
-    public void TargetHit()
+    public void TargetHit(bool showParticles)
     {
-        GameObject particles = Instantiate(particlesPrefab, transform.position, Quaternion.Euler(-90, 0, 0));
-        particles.GetComponent<Rigidbody2D>().velocity = rb2d.velocity;
-        particles.SetActive(true);
-        ParticleSystem particleSystem = particles.GetComponent<ParticleSystem>();
-        var main = particleSystem.main;
-        if (gameObject.CompareTag("EnemyProjectile"))
+        if (showParticles)
         {
-            particles.transform.localScale = new Vector3(1, 1, -1);
+            GameObject particles = Instantiate(particlesPrefab, transform.position, Quaternion.Euler(-90, 0, 0));
+            particles.GetComponent<Rigidbody2D>().velocity = rb2d.velocity;
+            particles.SetActive(true);
+            ParticleSystem particleSystem = particles.GetComponent<ParticleSystem>();
+            var main = particleSystem.main;
+            if (gameObject.CompareTag("EnemyProjectile"))
+            {
+                particles.transform.localScale = new Vector3(1, 1, -1);
+            }
+            main.startColor = particleColor;
         }
-        main.startColor = particleColor;
         Destroy(gameObject);
     }
 

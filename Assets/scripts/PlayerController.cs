@@ -11,6 +11,7 @@ public class PlayerController : MonoBehaviour
     public Vector2 portalOffset;
     public UnityEngine.Audio.AudioMixerGroup playerAlarmGroup;
     public AudioClip alarmClip;
+    public UnityEngine.Events.UnityEvent damagedEvent;
 
     private Rigidbody2D rb2d;
     private Shooter shooter;
@@ -24,9 +25,9 @@ public class PlayerController : MonoBehaviour
         shooter = GetComponent<Shooter>();
         health = GetComponent<Health>();
         var sources = GetComponents<AudioSource>();
-        foreach(AudioSource source in sources)
+        foreach (AudioSource source in sources)
         {
-            if(source.outputAudioMixerGroup == playerAlarmGroup)
+            if (source.outputAudioMixerGroup == playerAlarmGroup)
             {
                 alarmSource = source;
                 break;
@@ -65,7 +66,7 @@ public class PlayerController : MonoBehaviour
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        if(collision.gameObject.CompareTag("Enemy"))
+        if (collision.gameObject.CompareTag("Enemy"))
         {
             health.Hit(1);
         }
@@ -73,8 +74,9 @@ public class PlayerController : MonoBehaviour
 
     public void Damaged(int currentHealth)
     {
-        if(currentHealth != 0)
+        if (currentHealth != 0)
         {
+            damagedEvent.Invoke();
             alarmSource.PlayOneShot(alarmClip);
         }
     }

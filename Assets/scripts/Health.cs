@@ -51,7 +51,14 @@ public class Health : MonoBehaviour
         if (enemyShotByPlayer || playerShotByEnemy)
         {
             Projectile projectile = other.GetComponent<Projectile>();
-            projectile.TargetHit();
+            if (currentHealth - projectile.damage > 0)
+            {
+                projectile.TargetHit(true);
+            }
+            else
+            {
+                projectile.TargetHit(false);
+            }
             Hit(projectile.damage);
         }
     }
