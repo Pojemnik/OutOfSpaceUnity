@@ -11,18 +11,32 @@ public class Health : MonoBehaviour
     public GameObject explosion;
     public Vector2 explosionOffset;
     public Vector2 hpBarOffset;
+    public AudioClip damageClip;
+    public UnityEngine.Audio.AudioMixerGroup damageGroup;
+
+    private AudioSource audioSource;
 
     private int currentHealth;
 
-    void Start()
+    void Awake()
     {
         currentHealth = startHealth;
+        AudioSource[] audioSources = GetComponents<AudioSource>();
+        foreach(AudioSource source in audioSources)
+        {
+            if(source.outputAudioMixerGroup == damageGroup)
+            {
+                audioSource = source;
+                break;
+            }
+        }
     }
 
     public void Hit(int damage)
     {
         currentHealth -= damage;
         BroadcastMessage("Damaged", currentHealth);
+        audioSource.PlayOneShot(damageClip);
         if (currentHealth <= 0)
         {
             Die();

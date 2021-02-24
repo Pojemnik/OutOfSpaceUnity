@@ -9,14 +9,14 @@ public class PlayerController : MonoBehaviour
     public float shootCooldown;
     public GameObject jumpPortalPrefab;
     public Vector2 portalOffset;
-    public AudioClip damageClip;
-    public UnityEngine.Audio.AudioMixerGroup playerHitGroup;
+    public UnityEngine.Audio.AudioMixerGroup playerAlarmGroup;
+    public AudioClip alarmClip;
 
     private Rigidbody2D rb2d;
     private Shooter shooter;
     private Health health;
     private float shootTimer = 0.0f;
-    private AudioSource hitAudioSource;
+    private AudioSource alarmSource;
 
     void Awake()
     {
@@ -26,9 +26,10 @@ public class PlayerController : MonoBehaviour
         var sources = GetComponents<AudioSource>();
         foreach(AudioSource source in sources)
         {
-            if(source.outputAudioMixerGroup == playerHitGroup)
+            if(source.outputAudioMixerGroup == playerAlarmGroup)
             {
-                hitAudioSource = source;
+                alarmSource = source;
+                break;
             }
         }
     }
@@ -74,7 +75,7 @@ public class PlayerController : MonoBehaviour
     {
         if(currentHealth != 0)
         {
-            hitAudioSource.PlayOneShot(damageClip, 1);
+            alarmSource.PlayOneShot(alarmClip);
         }
     }
 

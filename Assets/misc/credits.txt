@@ -6,7 +6,7 @@ Jump and portals animation by Soluna Software
 Music by yd and Joth
 Explosion sound effect by Lamoot from Blender Foundation CC-BY 3.0
 Laser sounds by dklon and bart
-Other sounds by Ogrebane and NenadSimic
+Other sounds by Ogrebane, NenadSimic and yd
 Keyboard buttons graphics by Rallix
 Original version & rest of graphics: Tobiasz "IlaMoCLitTMW" Szulc, Andrzej "Pojemnik" Gauza
 Code of Unity version: Andrzej "Pojemnik" Gauza
