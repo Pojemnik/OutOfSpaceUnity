@@ -50,6 +50,9 @@ TagManager:
   - name: Projectiles
     uniqueID: 2143142851
     locked: 0
+  - name: Effects
+    uniqueID: 2500506077
+    locked: 0
   - name: Ships
     uniqueID: 2534022157
     locked: 0

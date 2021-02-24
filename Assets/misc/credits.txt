@@ -10,4 +10,4 @@ Other sounds by Ogrebane and NenadSimic
 Keyboard buttons graphics by Rallix
 Original version & rest of graphics: Tobiasz "IlaMoCLitTMW" Szulc, Andrzej "Pojemnik" Gauza
 Code of Unity version: Andrzej "Pojemnik" Gauza
-Testing: Adam "Gahlammon" Dachtera
+Testing: Adam "Gahlammon" Dachtera, Wojtek.boh10
