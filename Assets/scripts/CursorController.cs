@@ -7,10 +7,12 @@ public class CursorController : MonoBehaviour
 {
     public float yOffset;
     public float widthOffset;
+    public AudioClip cursorClick;
 
     private RectTransform rectTransform;
     private Image leftCursorImage;
     private Image rightCursorImage;
+    private AudioSource source;
 
     private void Awake()
     {
@@ -27,6 +29,7 @@ public class CursorController : MonoBehaviour
                 rightCursorImage = rect.gameObject.GetComponent<Image>();
             }
         }
+        source = GetComponent<AudioSource>();
     }
 
     public void OnPointerButtonEnter(GameObject button)
@@ -36,6 +39,7 @@ public class CursorController : MonoBehaviour
         RectTransform buttonTransform = button.GetComponent<RectTransform>();
         rectTransform.anchoredPosition = buttonTransform.anchoredPosition + new Vector2(0, yOffset);
         rectTransform.SetSizeWithCurrentAnchors(RectTransform.Axis.Horizontal, buttonTransform.rect.width + widthOffset);
+        source.PlayOneShot(cursorClick);
     }
 
     public void OnPointerButtonExit(GameObject button)
