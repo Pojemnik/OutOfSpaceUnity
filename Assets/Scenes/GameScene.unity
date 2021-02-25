@@ -7856,7 +7856,7 @@ AudioSource:
     type: 2}
   m_audioClip: {fileID: 0}
   m_PlayOnAwake: 1
-  m_Volume: 0.1
+  m_Volume: 0.15
   m_Pitch: 1
   Loop: 0
   Mute: 0
@@ -8847,7 +8847,7 @@ AudioSource:
     type: 2}
   m_audioClip: {fileID: 0}
   m_PlayOnAwake: 1
-  m_Volume: 0.1
+  m_Volume: 0.15
   m_Pitch: 1
   Loop: 0
   Mute: 0
@@ -8947,18 +8947,7 @@ MonoBehaviour:
   type: 0
   deathEvent:
     m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 511312754}
-        m_MethodName: OnUnitDeath
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
+      m_Calls: []
   explosion: {fileID: 1165728396}
   explosionOffset: {x: 0, y: 0}
   hpBarOffset: {x: 0, y: 0}
@@ -29453,7 +29442,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   levelNumber: 12
-  startLevel: 3
+  startLevel: 0
   startJump:
     m_PersistentCalls:
       m_Calls:
@@ -29564,6 +29553,7 @@ GameObject:
   - component: {fileID: 2035156457}
   - component: {fileID: 2035156456}
   - component: {fileID: 2035156466}
+  - component: {fileID: 2035156467}
   m_Layer: 0
   m_Name: Enemy5
   m_TagString: Enemy
@@ -29584,7 +29574,7 @@ AudioSource:
     type: 2}
   m_audioClip: {fileID: 0}
   m_PlayOnAwake: 1
-  m_Volume: 0.1
+  m_Volume: 0.15
   m_Pitch: 1
   Loop: 0
   Mute: 0
@@ -29970,3 +29960,17 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!114 &2035156467
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2035156455}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6be34870dbb508043bc6ff66276102c2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  HpPickupPrefab: {fileID: 601587574}
+  hpPickupVelocity: -1

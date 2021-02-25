@@ -15,20 +15,25 @@ public class Health : MonoBehaviour
     public UnityEngine.Audio.AudioMixerGroup damageGroup;
 
     private AudioSource audioSource;
-
+    private HpDropper dropper;
     private int currentHealth;
 
     void Awake()
     {
         currentHealth = startHealth;
         AudioSource[] audioSources = GetComponents<AudioSource>();
-        foreach(AudioSource source in audioSources)
+        foreach (AudioSource source in audioSources)
         {
-            if(source.outputAudioMixerGroup == damageGroup)
+            if (source.outputAudioMixerGroup == damageGroup)
             {
                 audioSource = source;
                 break;
             }
+        }
+        dropper = GetComponent<HpDropper>();
+        if (dropper != null)
+        {
+            deathEvent.AddListener(dropper.OnUnitDeath);
         }
     }
 
@@ -46,7 +51,7 @@ public class Health : MonoBehaviour
     public void Healed()
     {
         currentHealth += 1;
-        if(currentHealth > startHealth)
+        if (currentHealth > startHealth)
         {
             currentHealth = startHealth;
         }
