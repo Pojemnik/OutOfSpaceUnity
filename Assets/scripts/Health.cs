@@ -43,6 +43,15 @@ public class Health : MonoBehaviour
         }
     }
 
+    public void Healed()
+    {
+        currentHealth += 1;
+        if(currentHealth > startHealth)
+        {
+            currentHealth = startHealth;
+        }
+    }
+
     private void OnCollisionEnter2D(Collision2D collision)
     {
         GameObject other = collision.gameObject;

@@ -7,6 +7,7 @@ public class LevelSpawnData : ScriptableObject
 {
     public List<EnemySpawnData> enemies;
 }
+
 public enum AiType
 {
     SnakeRight,

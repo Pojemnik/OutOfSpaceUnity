@@ -5,11 +5,14 @@ using UnityEngine;
 public class HpBarController : MonoBehaviour
 {
     public Sprite[] sprites;
+
     private SpriteRenderer rendererComponent;
+    private int currentHealth;
 
     void Start()
     {
         rendererComponent = GetComponent<SpriteRenderer>();
+        currentHealth = sprites.Length;
     }
 
     public void Damaged(int newHealth)
@@ -22,6 +25,20 @@ public class HpBarController : MonoBehaviour
         else if (newHealth > 0)
         {
             rendererComponent.sprite = sprites[newHealth - 1];
+        }
+        currentHealth = newHealth;
+    }
+
+    public void Healed()
+    {
+        currentHealth++;
+        if (currentHealth > sprites.Length)
+        {
+            currentHealth = sprites.Length;
+        }
+        else
+        {
+            rendererComponent.sprite = sprites[currentHealth - 1];
         }
     }
 }

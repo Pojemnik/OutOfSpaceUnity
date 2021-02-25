@@ -6,7 +6,7 @@ using UnityEngine.Events;
 public class SpawnerController : MonoBehaviour
 {
     public List<LevelSpawnData> levels;
-    public UnityEvent allEniemiesDeadEvent;
+    public UnityEvent levelFinshedEvent;
     public List<GameObject> hpBarsPrefabs;
     public List<GameObject> enemiesPrefabs;
     public Vector2 maxBounds;
@@ -16,6 +16,7 @@ public class SpawnerController : MonoBehaviour
     private int enemiesAlive = 0;
     private List<Health> bossSpawnedEnemiesHealths;
     private int currentLevel;
+    private int hpToPickUp = 0;
 
     private void Awake()
     {
@@ -140,6 +141,10 @@ public class SpawnerController : MonoBehaviour
         }
         enemy.SetActive(true);
         enemiesAlive++;
+        if(enemy.GetComponent<HpDropper>() != null)
+        {
+            hpToPickUp++;
+        }
         return enemyHealth;
     }
 
@@ -163,12 +168,21 @@ public class SpawnerController : MonoBehaviour
         }
     }
 
+    public void OnPickedUpHp()
+    {
+        hpToPickUp--;
+        if (enemiesAlive == 0 && hpToPickUp == 0)
+        {
+            levelFinshedEvent.Invoke();
+        }
+    }
+
     public void OnEnemyDeath()
     {
         enemiesAlive--;
-        if (enemiesAlive == 0)
+        if (enemiesAlive == 0 && hpToPickUp == 0)
         {
-            allEniemiesDeadEvent.Invoke();
+            levelFinshedEvent.Invoke();
         }
     }
 }

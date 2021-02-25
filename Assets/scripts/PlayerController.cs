@@ -12,6 +12,7 @@ public class PlayerController : MonoBehaviour
     public UnityEngine.Audio.AudioMixerGroup playerAlarmGroup;
     public AudioClip alarmClip;
     public UnityEngine.Events.UnityEvent damagedEvent;
+    public UnityEngine.Events.UnityEvent healedEvent;
 
     private Rigidbody2D rb2d;
     private Shooter shooter;
@@ -79,6 +80,11 @@ public class PlayerController : MonoBehaviour
             damagedEvent.Invoke();
             alarmSource.PlayOneShot(alarmClip);
         }
+    }
+
+    public void OnHpPickedUp()
+    {
+        healedEvent.Invoke();
     }
 
     public void OnJumpStart()
