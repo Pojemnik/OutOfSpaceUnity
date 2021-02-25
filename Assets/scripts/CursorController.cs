@@ -8,11 +8,13 @@ public class CursorController : MonoBehaviour
     public float yOffset;
     public float widthOffset;
     public AudioClip cursorClick;
+    public float moveMultipler;
 
     private RectTransform rectTransform;
     private Image leftCursorImage;
     private Image rightCursorImage;
     private AudioSource source;
+    private float startWidth;
 
     private void Awake()
     {
@@ -38,13 +40,28 @@ public class CursorController : MonoBehaviour
         rightCursorImage.color = Color.white;
         RectTransform buttonTransform = button.GetComponent<RectTransform>();
         rectTransform.anchoredPosition = buttonTransform.anchoredPosition + new Vector2(0, yOffset);
-        rectTransform.SetSizeWithCurrentAnchors(RectTransform.Axis.Horizontal, buttonTransform.rect.width + widthOffset);
+        startWidth = buttonTransform.rect.width + widthOffset;
+        rectTransform.SetSizeWithCurrentAnchors(RectTransform.Axis.Horizontal, startWidth);
         source.PlayOneShot(cursorClick);
+        StopAllCoroutines();
+        StartCoroutine(MovingCoroutine());
     }
 
     public void OnPointerButtonExit(GameObject button)
     {
         leftCursorImage.color = Color.clear;
         rightCursorImage.color = Color.clear;
+        StopAllCoroutines();
+    }
+
+    private IEnumerator MovingCoroutine()
+    {
+        float time = 0;
+        while(true)
+        {
+            rectTransform.SetSizeWithCurrentAnchors(RectTransform.Axis.Horizontal, startWidth + Mathf.Sin(time) / moveMultipler);
+            time += 0.1f;
+            yield return new WaitForSecondsRealtime(0.1f);
+        }
     }
 }

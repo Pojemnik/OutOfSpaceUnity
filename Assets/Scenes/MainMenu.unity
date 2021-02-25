@@ -2657,6 +2657,7 @@ MonoBehaviour:
   yOffset: -310
   widthOffset: 40
   cursorClick: {fileID: 8300000, guid: 285c196c0b89636468deac2a91348ee4, type: 3}
+  moveMultipler: 0.1
 --- !u!114 &685105430
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4047,6 +4048,7 @@ MonoBehaviour:
   yOffset: -310
   widthOffset: 40
   cursorClick: {fileID: 8300000, guid: 285c196c0b89636468deac2a91348ee4, type: 3}
+  moveMultipler: 0.1
 --- !u!114 &1010625748
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4258,6 +4260,7 @@ MonoBehaviour:
   yOffset: -45
   widthOffset: 40
   cursorClick: {fileID: 8300000, guid: 285c196c0b89636468deac2a91348ee4, type: 3}
+  moveMultipler: 0.1
 --- !u!114 &1048058374
 MonoBehaviour:
   m_ObjectHideFlags: 0
