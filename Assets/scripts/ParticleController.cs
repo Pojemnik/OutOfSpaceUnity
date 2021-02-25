@@ -7,7 +7,7 @@ public class ParticleController : MonoBehaviour
     private ParticleSystem particles;
     private AudioSource sound;
 
-    void Awake()
+    void Start()
     {
         particles = GetComponent<ParticleSystem>();
         sound = GetComponent<AudioSource>();
