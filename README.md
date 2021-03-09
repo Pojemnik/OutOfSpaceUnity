@@ -1,13 +1,15 @@
 # Out of space Unity edition
 
-The goal of this project is to learn Unity by remaking an old game made by me and my friend using C++ and SFML library.
+![gif1](other/oosgif.gif)
 
-The game won't be exactly the same as the old version. I will try to improve it a bit and add more levels, enemies and other stuff.
-
-Credits available in game or in Assets/misc/credits.txt.
+The goal of this project is to learn Unity by remaking and improving an old game made by me and my friend using C++ and SFML library.
 
 ### The game can be played here:
 https://pojemnik.itch.io/out-of-space
+
+### Screenshots:
+![Screenshot 1](other/sc1.png)
+![Screenshot 2](other/sc2.png)
 
 ### Link to the original project:
 https://github.com/IIaMoCLitTMW/OUT-OF-SPACE
